@@ -26,7 +26,8 @@ export default class App extends Component {
       // <img key={i} src={post.image} />
 
       <div key={post.id}>
-        <h3>{post.image}</h3>
+        {/* <div>{post.image}</div> */}
+        <img src={post.image} height="200" width="200" />
         <h3>{post.title}</h3>
         <h3>{post.price}</h3>
       </div>
