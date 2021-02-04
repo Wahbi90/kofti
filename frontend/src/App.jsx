@@ -1,37 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Home from "./components/home/home.js";
+import Navbar from "./components/navbar/navbar.js";
+import Sidebar from "./components/sidebar/sidebar";
+import CardsList from "./components/cardsList/cardsList";
+import Navside from "./components/navSide/navSide";
+import { Layout, Menu, Breadcrumb } from 'antd';
+import  Cart from "./components/cart/cart"
+
+
 
 function App() {
-  // Create the count state.
-  const [count, setCount] = useState(0);
-  // Create the counter (+1 every second).
-  useEffect(() => {
-    const timer = setTimeout(() => setCount(count + 1), 1000);
-    return () => clearTimeout(timer);
-  }, [count, setCount]);
-  // Return the App component.
+  const { Header, Content, Footer } = Layout;
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          Page has been open for <code>{count}</code> seconds.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+      <Navbar/> 
+     <Sidebar/>
+     <div className="site-layout-background" style={{ padding: 250, marginTop: -150}}>
+     <CardsList/>  
+        {/* <Home/>      */}
+     {/* <Cart/> */}
+      </div>
+   
+       {/* <Navside/> */}
+      
     </div>
   );
 }
