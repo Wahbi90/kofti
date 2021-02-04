@@ -1,7 +1,14 @@
+
 import React,{ useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Switch } from 'react-router-dom'
-
+import Home from "./components/home/home.js";
+import Navbar from "./components/navbar/navbar.js";
+import Sidebar from "./components/sidebar/sidebar";
+import CardsList from "./components/cardsList/cardsList";
+import Navside from "./components/navSide/navSide";
+import { Layout, Menu, Breadcrumb } from 'antd';
+import  Cart from "./components/cart/cart"
 import Header from './Component/Sections/Header';
 import SignUp from './Component/Pages/SignUp';
 import SignIn from './Component/Pages/SignIn';
@@ -16,7 +23,9 @@ import { getUserById, setLoading, setNeedVerification } from './store/actions/au
 // import { RootState } from './store';
 import SIgnIn from './Component/Pages/SignIn';
 
+
 const App = () => {
+const { Header, Content, Footer } = Layout;
 const dispatch = useDispatch();
 const { loading } = useSelector((state) => state.auth);
 
@@ -44,6 +53,7 @@ if (loading) {
 }
 
   return (
+
     <BrowserRouter>
       <Header />
       <Switch>
@@ -54,6 +64,16 @@ if (loading) {
         <PrivateRoute path='/dashboard' component={Dashboard} exact />
       </Switch>
     </BrowserRouter>
+//     <div className="App">
+//       <Navbar/> 
+//      <Sidebar/>
+//      <div className="site-layout-background" style={{ padding: 250, marginTop: -150}}>
+//      <CardsList/>  
+//         {/* <Home/>      */}
+//      {/* <Cart/> */}
+//       </div>
+//        {/* <Navside/> */}
+//     </div>
   );
 }
 
