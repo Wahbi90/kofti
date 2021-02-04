@@ -1,4 +1,4 @@
-import React,{ FC, useEffect } from 'react';
+import React,{ useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Switch } from 'react-router-dom'
 
@@ -13,12 +13,12 @@ import PublicRoute from './Component/auth/PublicRoute';
 import Loader from './Component/UI/Loader';
 import firebase from './firebase/config';
 import { getUserById, setLoading, setNeedVerification } from './store/actions/authActions';
-import { RootState } from './store';
+// import { RootState } from './store';
 import SIgnIn from './Component/Pages/SignIn';
 
-const App: FC = () => {
+const App = () => {
 const dispatch = useDispatch();
-const { loading } = useSelector((state: RootState) => state.auth);
+const { loading } = useSelector((state) => state.auth);
 
 useEffect(() => {
   dispatch(setLoading(true));
