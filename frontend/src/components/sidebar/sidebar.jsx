@@ -30,28 +30,28 @@ function Sidebar({ changeCategory }) {
       >
         <div className="logo" />
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-          <SubMenu key="1" icon={<UserOutlined />} title="Categories">
-            <Menu.Item key="1" onClick={() => changeCategory('electronics')}>
+          <SubMenu key="1" icon={<UserOutlined />} title="clothes">
+            {/* <Menu.Item key="1">option1</Menu.Item> */}
+            <Menu.Item key="1" onClick={() => changeCategory('men clothing')}>
+              Men Clothing
+            </Menu.Item>
+            <Menu.Item key="2" onClick={() => changeCategory('women clothing')}>
+              Men Clothing
+            </Menu.Item>
+          </SubMenu>
+          <SubMenu key="4" icon={<AppstoreOutlined />} title="accessoires">
+            <Menu.Item key="13" onClick={() => changeCategory('jewelery')}>
+              jewelery
+            </Menu.Item>
+          </SubMenu>
+          <SubMenu key="2" icon={<VideoCameraOutlined />} title="electronics">
+            <Menu.Item key="5" onClick={() => changeCategory('electronics')}>
               electronics
             </Menu.Item>
-            <Menu.Item key="2">option2</Menu.Item>
-            <Menu.Item key="3">option3</Menu.Item>
-            <Menu.Item key="4">option4</Menu.Item>
+            {/* <Menu.Item key="6">option6</Menu.Item> */}
           </SubMenu>
-          <SubMenu key="2" icon={<VideoCameraOutlined />} title="clothes  ">
-            <Menu.Item key="5">option1</Menu.Item>
-            <Menu.Item key="6">option2</Menu.Item>
-            <Menu.Item key="7">option3</Menu.Item>
-            <Menu.Item key="8">option4</Menu.Item>
-          </SubMenu>
-          {/*
-          <SubMenu key="3" icon={<UploadOutlined />} title="categorie 3">
-            <Menu.Item key="1">option1</Menu.Item>
-            <Menu.Item key="2">option2</Menu.Item>
-            <Menu.Item key="3">option3</Menu.Item>
-            <Menu.Item key="4">option4</Menu.Item>
-          </SubMenu>
-          */}
+
+          <SubMenu key="3" icon={<ShopOutlined />} title="food"></SubMenu>
         </Menu>
       </Sider>
     </Layout>

@@ -50,7 +50,12 @@ class CardsList extends Component {
                     <Button type="primary">Add to cart</Button>,
                   ]}
                 >
-                  <Meta title={post.title} description={post.price} />
+                  <Meta
+                    title={post.title}
+                    description={
+                      <h3>{post.price}</h3>
+                    }
+                  />
                 </Card>
               </Col>
             ))}
