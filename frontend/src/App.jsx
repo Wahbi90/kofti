@@ -8,7 +8,6 @@ import CardsList from "./components/cardsList/cardsList";
 import Navside from "./components/navSide/navSide";
 import { Layout, Menu, Breadcrumb } from 'antd';
 import  Cart from "./components/cart/cart"
-
 import Header from './Component/Sections/Header';
 import SignUp from './Component/Pages/SignUp';
 import SignIn from './Component/Pages/SignIn';
@@ -24,6 +23,7 @@ import { getUserById, setLoading, setNeedVerification } from './store/actions/au
 import SIgnIn from './Component/Pages/SignIn';
 
 const App = () => {
+const { Header, Content, Footer } = Layout;
 const dispatch = useDispatch();
 const { loading } = useSelector((state) => state.auth);
 
