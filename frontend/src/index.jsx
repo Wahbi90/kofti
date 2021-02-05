@@ -5,6 +5,7 @@ import App from './App.jsx';
 import './firebase/config';
 import 'bulma/css/bulma.min.css';
 import store from "./store"
+import 'antd/dist/antd.css';
 
 ReactDOM.render(
   <React.StrictMode>

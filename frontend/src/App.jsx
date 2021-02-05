@@ -1,6 +1,13 @@
 import React,{ useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Switch } from 'react-router-dom'
+import Home from "./components/home/home.js";
+import Navbar from "./components/navbar/navbar.js";
+import Sidebar from "./components/sidebar/sidebar";
+import CardsList from "./components/cardsList/cardsList";
+import Navside from "./components/navSide/navSide";
+import { Layout, Menu, Breadcrumb } from 'antd';
+import  Cart from "./components/cart/cart"
 
 import Header from './Component/Sections/Header';
 import SignUp from './Component/Pages/SignUp';
@@ -42,7 +49,10 @@ return () => {
 if (loading) {
   <Loader />;
 }
-
+}
+function App() {
+  const { Header, Content, Footer } = Layout;
+  
   return (
     <BrowserRouter>
       <Header />
@@ -53,6 +63,19 @@ if (loading) {
         <PublicRoute path='/forgot-password' component={ForgotPassword} exact />
         <PrivateRoute path='/dashboard' component={Dashboard} exact />
       </Switch>
+    
+    <div className="App">
+      <Navbar/> 
+     <Sidebar/>
+     <div className="site-layout-background" style={{ padding: 250, marginTop: -150}}>
+     <CardsList/>  
+        {/* <Home/>      */}
+     {/* <Cart/> */}
+      </div>
+   
+       {/* <Navside/> */}
+      
+    </div>
     </BrowserRouter>
   );
 }
