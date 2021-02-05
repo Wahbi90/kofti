@@ -9,7 +9,6 @@ import { Button } from 'antd';
 import { InputNumber } from 'antd';
 import './cardsList.css';
 import { connect } from "react-redux";
-// import util from "../util";
 import { addToCart } from "../actions/cartActions";
 import { fetchProducts } from "../actions/productActions";
 
@@ -72,7 +71,7 @@ function CardsList() {
     <Divider orientation="left"></Divider>
    <Pagination defaultCurrent={1} total={500} />
    <Divider orientation="left"></Divider>
-      <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+      <Footer style={{ textAlign: 'center' }}>freshky ©2021 Created by Us</Footer>
 
 
   

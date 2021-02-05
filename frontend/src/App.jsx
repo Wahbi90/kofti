@@ -52,12 +52,9 @@ return () => {
 if (loading) {
   <Loader />;
 }
-}
-function App() {
-  const { Header, Content, Footer } = Layout;
   
   return (
-  
+    
     <BrowserRouter>
       <Header />
       <Switch>
@@ -68,7 +65,7 @@ function App() {
         <PrivateRoute path='/dashboard' component={Dashboard} exact />
       </Switch>
     
-    <div className="App">
+  
       <Navbar/> 
      <Sidebar/>
       <div className="site-layout-background" style={{ padding: 250, marginTop: -150}}>
@@ -79,8 +76,9 @@ function App() {
    
        {/* <Navside/> */}
       
-    </div>
+ 
     </BrowserRouter>
+  
   );
 }
 
