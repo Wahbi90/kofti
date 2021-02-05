@@ -8,6 +8,10 @@ import Navside from '../navSide/navSide';
 import { Button } from 'antd';
 import { InputNumber } from 'antd';
 import './cardsList.css';
+import { connect } from "react-redux";
+// import util from "../util";
+import { addToCart } from "../actions/cartActions";
+import { fetchProducts } from "../actions/productActions";
 
 
 
@@ -23,42 +27,10 @@ const { Meta } = Card;
 
 
 function CardsList() {
-  
- const addToCart=  (image, name, price, id, quantity) =>{
-    this.setState(
-      {
-        selectedProduct: {
-          image: image,
-          name: name,
-          price: price,
-          id: id,
-          quantity: quantity
-        }
-      },
-      function() {
-        this.props.addToCart(this.state.selectedProduct);
-      }
-    );
-    this.setState(
-      {
-        isAdded: true
-      },
-      function() {
-        setTimeout(() => {
-          this.setState({
-            isAdded: false,
-            selectedProduct: {}
-          });
-        }, 3500);
-      }
-    );
+
+  componentDidMount = () => {
+    this.props.fetchProducts();
   }
-  
-  let image = this.props.image;
-    let name = this.props.name;
-    let price = this.props.price;
-    let id = this.props.id;
-    let quantity = this.props.productQuantity; 
 
     return (
      
@@ -96,138 +68,6 @@ function CardsList() {
     />
   </Card>
       </Col>
-      <Col className="gutter-row" span={4}>
-      <Card
-    style={{ width: 200 }}
-    cover={
-      <img
-        alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-      />
-    }
-    actions={[
-       <InputNumber min={1} max={100000} defaultValue={1} onChange={onChange} />,
-      <Button type="primary">Add to cart</Button>
-      
-    ]}
-  >
-    <Meta
-     
-      title="Card title"
-      description="This is the description"
-    />
-  </Card>
-      </Col>
-      <Col className="gutter-row" span={4}>
-      <Card
-    style={{ width: 200 }}
-    cover={
-      <img
-        alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-      />
-    }
-    actions={[
-       <InputNumber min={1} max={100000} defaultValue={1} onChange={onChange} />,
-      <Button type="primary">Add to cart</Button>
-      
-    ]}
-  >
-    <Meta
-     
-      title="Card title"
-      description="This is the description"
-    />
-  </Card>
-      </Col>
-      <Col className="gutter-row" span={4}>
-      <Card
-    style={{ width: 200 }}
-    cover={
-      <img
-        alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-      />
-    }
-    actions={[
-       <InputNumber min={1} max={100000} defaultValue={1} onChange={onChange} />,
-      <Button type="primary">Add to cart</Button>
-      
-    ]}
-  >
-    <Meta
-     
-      title="Card title"
-      description="This is the description"
-    />
-  </Card>
-      </Col>
-      <Col className="gutter-row" span={4}>
-      <Card
-    style={{ width: 200 }}
-    cover={
-      <img
-        alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-      />
-    }
-    actions={[
-       <InputNumber min={1} max={100000} defaultValue={1} onChange={onChange} />,
-      <Button type="primary">Add to cart</Button>
-      
-    ]}
-  >
-    <Meta
-     
-      title="Card title"
-      description="This is the description"
-    />
-  </Card>
-      </Col><Col className="gutter-row" span={4}>
-      <Card
-    style={{ width: 200 }}
-    cover={
-      <img
-        alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-      />
-    }
-    actions={[
-       <InputNumber min={1} max={100000} defaultValue={1} onChange={onChange} />,
-      <Button type="primary">Add to cart</Button>
-      
-    ]}
-  >
-    <Meta
-     
-      title="Card title"
-      description="This is the description"
-    />
-  </Card>
-      </Col>
-      <Col className="gutter-row" span={4}>
-      <Card
-    style={{ width: 200 }}
-    cover={
-      <img
-        alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-      />
-    }
-    actions={[
-       <InputNumber min={1} max={100000} defaultValue={1} onChange={onChange} />,
-      <Button type="primary">Add to cart</Button>
-      
-    ]}
-  >
-    <Meta
-     
-      title="Card title"
-      description="This is the description"
-    />
-  </Card>
-      </Col>
-
     </Row>
     <Divider orientation="left"></Divider>
    <Pagination defaultCurrent={1} total={500} />
@@ -242,31 +82,9 @@ function CardsList() {
     
   } 
 
-export default CardsList;
-
-
-
-
-
-
-
-{/* <Card
-    style={{ width: 200 }}
-    cover={
-      <img
-        alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-      />
-    }
-    actions={[
-      <SettingOutlined key="setting" />,
-      <EditOutlined key="edit" />,
-      <EllipsisOutlined key="ellipsis" />,
-    ]}
-  >
-    <Meta
-     
-      title="Card title"
-      description="This is the description"
-    />
-  </Card> */}
+export default  CardsList;
+const mapStateToProps = (state) => ({
+  products: state.products.filteredItems,
+  cartItems: state.cart.items,
+});
+  connect(mapStateToProps, { fetchProducts, addToCart })(CardsList);

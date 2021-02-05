@@ -7,7 +7,10 @@ import Sidebar from "./components/sidebar/sidebar";
 import CardsList from "./components/cardsList/cardsList";
 import Navside from "./components/navSide/navSide";
 import { Layout, Menu, Breadcrumb } from 'antd';
-import  Cart from "./components/cart/cart"
+import  Cart from "./components/cart/cart";
+import { Provider } from "react-redux";
+import store from "./store";
+
 import Header from './Component/Sections/Header';
 import SignUp from './Component/Pages/SignUp';
 import SignIn from './Component/Pages/SignIn';
@@ -54,6 +57,7 @@ function App() {
   const { Header, Content, Footer } = Layout;
   
   return (
+  
     <BrowserRouter>
       <Header />
       <Switch>
@@ -67,9 +71,9 @@ function App() {
     <div className="App">
       <Navbar/> 
      <Sidebar/>
-     <div className="site-layout-background" style={{ padding: 250, marginTop: -150}}>
-     <CardsList/>  
-        {/* <Home/>      */}
+      <div className="site-layout-background" style={{ padding: 250, marginTop: -150}}>
+    {/* <CardsList/>   */}
+    `    <Home/>     `
      {/* <Cart/> */}
       </div>
    
