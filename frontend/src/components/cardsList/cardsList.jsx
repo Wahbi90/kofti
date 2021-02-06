@@ -8,7 +8,6 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import { Pagination } from 'antd';
-import Navside from '../navSide/navSide';
 import { Button } from 'antd';
 import { InputNumber } from 'antd';
 import './cardsList.css';
