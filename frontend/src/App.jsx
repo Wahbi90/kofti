@@ -2,16 +2,16 @@ import React,{ useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Switch } from 'react-router-dom'
 import Home from "./components/home/home.js";
-import Navbar from "./components/navbar/navbar.js";
 import Sidebar from "./components/sidebar/sidebar";
 import CardsList from "./components/cardsList/cardsList";
-import Navside from "./components/navSide/navSide";
 import { Layout, Menu, Breadcrumb } from 'antd';
-import  Cart from "./components/cart/cart";
+import  Cart from "./components/cart/cart"
+import Headers from './Component/Sections/Header';
 import { Provider } from "react-redux";
 import store from "./store";
 
 import Header from './Component/Sections/Header';
+
 import SignUp from './Component/Pages/SignUp';
 import SignIn from './Component/Pages/SignIn';
 import ForgotPassword from './Component/Pages/ForgotPassword';
@@ -26,7 +26,7 @@ import { getUserById, setLoading, setNeedVerification } from './store/actions/au
 import SIgnIn from './Component/Pages/SignIn';
 
 const App = () => {
-const { Header, Content, Footer } = Layout;
+// const { Header, Content, Footer } = Layout;
 const dispatch = useDispatch();
 const { loading } = useSelector((state) => state.auth);
 
@@ -52,14 +52,14 @@ return () => {
 if (loading) {
   <Loader />;
 }
-}
-function App() {
-  const { Header, Content, Footer } = Layout;
+
+ 
   
   return (
   
     <BrowserRouter>
-      <Header />
+   
+      <Headers />
       <Switch>
         <PublicRoute path='/' component={HomePage} exact />
         <PublicRoute path='/signup' component={SignUp} exact />
@@ -68,18 +68,17 @@ function App() {
         <PrivateRoute path='/dashboard' component={Dashboard} exact />
       </Switch>
     
-    <div className="App">
-      <Navbar/> 
+    
+   
      <Sidebar/>
-      <div className="site-layout-background" style={{ padding: 250, marginTop: -150}}>
-    {/* <CardsList/>   */}
-    `    <Home/>     `
+     <div className="site-layout-background" style={{ padding: 250, marginTop: -150}}>
+     <CardsList/>  
+        <Home/>      
+
      {/* <Cart/> */}
       </div>
    
-       {/* <Navside/> */}
-      
-    </div>
+       
     </BrowserRouter>
   );
 }

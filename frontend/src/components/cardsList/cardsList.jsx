@@ -4,7 +4,6 @@ import { Card, Avatar } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import { Pagination } from 'antd';
-import Navside from '../navSide/navSide';
 import { Button } from 'antd';
 import { InputNumber } from 'antd';
 import './cardsList.css';
@@ -12,7 +11,6 @@ import { connect } from "react-redux";
 // import util from "../util";
 import { addToCart } from "../actions/cartActions";
 import { fetchProducts } from "../actions/productActions";
-
 
 
 function onChange(value) {
@@ -27,10 +25,45 @@ const { Meta } = Card;
 
 
 function CardsList() {
+//  const addToCart=  (image, name, price, id, quantity) =>{
+//     this.setState(
+//       {
+//         selectedProduct: {
+//           image: image,
+//           name: name,
+//           price: price,
+//           id: id,
+//           quantity: quantity
+//         }
+//       },
+//       function() {
+//         this.props.addToCart(this.state.selectedProduct);
+//       }
+//     );
+//     this.setState(
+//       {
+//         isAdded: true
+//       },
+//       function() {
+//         setTimeout(() => {
+//           this.setState({
+//             isAdded: false,
+//             selectedProduct: {}
+//           });
+//         }, 3500);
+//       }
+//     );
+//   } 
+//   let image = this.props.image;
+//     let name = this.props.name;
+//     let price = this.props.price;
+//     let id = this.props.id;
+//     let quantity = this.props.productQuantity; 
 
   componentDidMount = () => {
     this.props.fetchProducts();
   }
+
 
     return (
      
@@ -48,14 +81,14 @@ function CardsList() {
     actions={[
        <InputNumber min={1} max={100000} defaultValue={1} onChange={onChange} />,
       <Button type="primary"
-      onClick={this.addToCart.bind(
-        this,
-        image,
-        name,
-        price,
-        id,
-        quantity
-      )}
+      // onClick={this.addToCart.bind(
+      //   this,
+      //   image,
+      //   name,
+      //   price,
+      //   id,
+      //   quantity
+      // )}
       >
         Add to cart</Button>
       
