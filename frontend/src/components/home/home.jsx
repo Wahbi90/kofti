@@ -8,6 +8,7 @@ import { Row, Col, Divider } from 'antd';
 import { Input, Space } from 'antd';
 
 
+
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 const { Meta } = Card;
@@ -30,9 +31,10 @@ const contentStyle = {
   function Home() {
     const { Search } = Input;
     return ( 
+    
+  <Layout>
+  <Layout>
   
-  <Layout>
-  <Layout>
     <Layout style={{ padding: '0 1px 50px' }}>
       <Content
         className="site-layout-background"
@@ -180,11 +182,14 @@ const contentStyle = {
   </Card>
   
     </Row>
+    
    
       </Content>
     </Layout>
   </Layout>
 </Layout>
+
+
     );
   }
 

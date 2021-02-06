@@ -1,86 +1,85 @@
-import React,{ useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter, Switch } from 'react-router-dom'
-import Home from "./components/home/home.js";
-import Sidebar from "./components/sidebar/sidebar";
-import CardsList from "./components/cardsList/cardsList";
+import { BrowserRouter, Switch } from 'react-router-dom';
+import Home from './components/home/home';
+import Sidebar from './components/sidebar/sidebar';
+import CardsList from './components/cardsList/cardsList';
 import { Layout, Menu, Breadcrumb } from 'antd';
-import  Cart from "./components/cart/cart"
-import Headers from './Component/Sections/Header';
-import { Provider } from "react-redux";
-import store from "./store";
+import Cart from './components/cart/cart';
+import Headers from './components/PathAndAuth/Sections/Header';
+import { Provider } from 'react-redux';
+import store from './store';
 
-import Header from './Component/Sections/Header';
+import Header from './components/PathAndAuth/Sections/Header';
 
-import SignUp from './Component/Pages/SignUp';
-import SignIn from './Component/Pages/SignIn';
-import ForgotPassword from './Component/Pages/ForgotPassword';
-import HomePage from './Component/Pages/HomePage';
-import Dashboard from './Component/Pages/Dashboard';
-import PrivateRoute from './Component/auth/PrivateRoute';
-import PublicRoute from './Component/auth/PublicRoute';
-import Loader from './Component/UI/Loader';
+import SignUp from './components/PathAndAuth/Pages/SignUp';
+import SignIn from './components/PathAndAuth/Pages/SignIn';
+import ForgotPassword from './components/PathAndAuth/Pages/ForgotPassword';
+import HomePage from './components/PathAndAuth/Pages/HomePage';
+import Dashboard from './components/PathAndAuth/Pages/Dashboard';
+import PrivateRoute from './components/PathAndAuth/auth/PrivateRoute';
+import PublicRoute from './components/PathAndAuth/auth/PublicRoute';
+import Loader from './components/PathAndAuth/UI/Loader';
 import firebase from './firebase/config';
-import { getUserById, setLoading, setNeedVerification } from './store/actions/authActions';
+import {
+  getUserById,
+  setLoading,
+  setNeedVerification,
+} from './store/actions/authActions';
 // import { RootState } from './store';
-import SIgnIn from './Component/Pages/SignIn';
+import SIgnIn from './components/PathAndAuth/Pages/SignIn';
 
 const App = () => {
-// const { Header, Content, Footer } = Layout;
-const dispatch = useDispatch();
-const { loading } = useSelector((state) => state.auth);
+  // const { Header, Content, Footer } = Layout;
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.auth);
 
-useEffect(() => {
-  dispatch(setLoading(true));
-  const unsub = firebase.auth().onAuthStateChanged(async (user) => {
-    if (user){
-      dispatch(setLoading(true));
-      await dispatch(getUserById(user.uid));
-      if (!user.emailVerified){
-        dispatch(setNeedVerification());
+  useEffect(() => {
+    dispatch(setLoading(true));
+    const unsub = firebase.auth().onAuthStateChanged(async (user) => {
+      if (user) {
+        dispatch(setLoading(true));
+        await dispatch(getUserById(user.uid));
+        if (!user.emailVerified) {
+          dispatch(setNeedVerification());
+        }
       }
-    }
-    dispatch(setLoading(false));
-  });
+      dispatch(setLoading(false));
+    });
 
-return () => {
-  unsub();
-} 
+    return () => {
+      unsub();
+    };
+  }, [dispatch]);
 
-}, [dispatch]);
+  if (loading) {
+    <Loader />;
+  }
 
-if (loading) {
-  <Loader />;
-}
-
- 
-  
   return (
-  
     <BrowserRouter>
-   
       <Headers />
       <Switch>
-        <PublicRoute path='/' component={HomePage} exact />
-        <PublicRoute path='/signup' component={SignUp} exact />
-        <PublicRoute path='/signin' component={SIgnIn} exact />
-        <PublicRoute path='/forgot-password' component={ForgotPassword} exact />
-        <PrivateRoute path='/dashboard' component={Dashboard} exact />
+        <PublicRoute exact path="/">
+          <Sidebar />
+          <Home />
+        </PublicRoute>
+        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PublicRoute path="/signup" component={SignUp} />
+        <PublicRoute path="/signin" component={SIgnIn} />
+        <PublicRoute path="/forgot-password" component={ForgotPassword} />
       </Switch>
-    
-    
-   
-     <Sidebar/>
-     <div className="site-layout-background" style={{ padding: 250, marginTop: -150}}>
-     <CardsList/>  
-        <Home/>      
 
-     {/* <Cart/> */}
-      </div>
-   
-       
+      {/* <div
+        className="site-layout-background"
+        style={{ padding: 250, marginTop: -150 }}
+      >
+        <CardsList /> */}
+
+      {/* <Cart/> */}
+      {/* </div> */}
     </BrowserRouter>
   );
-}
+};
 
 export default App;

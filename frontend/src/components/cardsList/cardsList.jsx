@@ -60,7 +60,7 @@ function CardsList() {
 //     let id = this.props.id;
 //     let quantity = this.props.productQuantity; 
 
-  componentDidMount = () => {
+  const componentDidMount = () => {
     this.props.fetchProducts();
   }
 

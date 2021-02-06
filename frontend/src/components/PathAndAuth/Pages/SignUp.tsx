@@ -1,16 +1,20 @@
 import React, { useState, FormEvent, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+
 import Input from '../UI/Input';
 import Button from '../UI/Button';
 import Message from '../UI/message';
-import { signin, setError, setLoading } from '../../store/actions/authActions';
-import { RootState } from '../../store';
+import { signup, setError, setLoading } from '../../../store/actions/authActions';
+import { RootState } from '../../../store';
 
-const SIgnIn = () => {
+const SignUp = () => {
+    const [firstName, setFirstName] = useState ('');
     const [email, setEmail] = useState ('');
     const [password, setPassword] = useState ('');
+    const [gender, setGender] = useState ('');
+    const [types, setTypes] = useState (false)
     const [loading, setLoading] = useState (false);
+
     const dispatch = useDispatch();
     const {error} = useSelector((state:RootState) => state.auth);
 
@@ -25,14 +29,21 @@ const SIgnIn = () => {
     const submitHandler = (e:FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        dispatch(signin({ email, password }, () => setLoading(false)));
+        dispatch(signup({ email, password, firstName, gender, types }, () => setLoading(false)));
     }
     return (
         <section className="section">
             <div className="container">
-                <h2 className="has-text-centered is-size-2 mb-3">Sign In</h2>
+                <h2 className="has-text-centered is-size-2 mb-3">Sign Up</h2>
                 <form className="form" onSubmit={submitHandler} >
                     {error && <Message type="danger" msg={error} /> }
+                    <Input 
+                    name="firstName"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.currentTarget.value)}
+                    placeholder="First Name"
+                    label="First Name"
+                    />
                     <Input 
                     type="email"
                     name="email"
@@ -49,8 +60,14 @@ const SIgnIn = () => {
                     placeholder="Password"
                     label="Password"
                     />
-                    <p> <Link to="/forgot-password"> Forgot password ?</Link></p>
-                    <Button text={loading ? "loading ..." : "Sign In"} className="is-primary is-fullwidth mt-5" disabled= {loading} />
+                    <Input 
+                    name="gender"
+                    value={gender}
+                    onChange={(e) => setGender(e.currentTarget.value)}
+                    placeholder="Gender"
+                    label="Gender"
+                    />
+                    <Button text={loading ? "loading ..." : "Sign Up"} className="is-primary is-fullwidth mt-5" disabled= {loading} />
                 </form>
             </div>
         </section>
@@ -58,4 +75,4 @@ const SIgnIn = () => {
 }
 
 
-export default SIgnIn
+export default SignUp
