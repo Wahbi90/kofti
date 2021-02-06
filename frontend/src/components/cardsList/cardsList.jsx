@@ -52,9 +52,7 @@ class CardsList extends Component {
                 >
                   <Meta
                     title={post.title}
-                    description={
-                      <h3>{post.price}</h3>
-                    }
+                    description={<h3>{post.price}</h3>}
                   />
                 </Card>
               </Col>
