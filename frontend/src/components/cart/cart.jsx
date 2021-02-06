@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import util from "../util";
 import { addToCart, removeFromCart } from "../actions/cartActions";
 
 class Basket extends Component {
