@@ -7,6 +7,11 @@ import CardsList from "./components/cardsList/cardsList";
 import { Layout, Menu, Breadcrumb } from 'antd';
 import  Cart from "./components/cart/cart"
 import Headers from './Component/Sections/Header';
+import { Provider } from "react-redux";
+import store from "./store";
+
+import Header from './Component/Sections/Header';
+
 import SignUp from './Component/Pages/SignUp';
 import SignIn from './Component/Pages/SignIn';
 import ForgotPassword from './Component/Pages/ForgotPassword';
@@ -51,6 +56,7 @@ if (loading) {
  
   
   return (
+  
     <BrowserRouter>
    
       <Headers />
@@ -68,6 +74,7 @@ if (loading) {
      <div className="site-layout-background" style={{ padding: 250, marginTop: -150}}>
      <CardsList/>  
         <Home/>      
+
      {/* <Cart/> */}
       </div>
    
