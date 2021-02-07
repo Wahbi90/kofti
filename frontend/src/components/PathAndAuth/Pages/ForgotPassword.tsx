@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
 import Message from '../UI/message';
-import { sendPasswordResetEmail, setError, setSuccess } from '../../store/actions/authActions';
-import { RootState } from '../../store';
+import { sendPasswordResetEmail, setError, setSuccess } from '../../../redux/auth/authActions';
+import { RootState } from '../../..';
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState ('');

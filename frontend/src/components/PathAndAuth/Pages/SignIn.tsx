@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
 import Message from '../UI/message';
-import { signin, setError, setLoading } from '../../store/actions/authActions';
-import { RootState } from '../../store';
+import { signin, setError, setLoading } from '../../../redux/auth/authActions';
+import { RootState } from '../../..';
 
 const SIgnIn = () => {
     const [email, setEmail] = useState ('');

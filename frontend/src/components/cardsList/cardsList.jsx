@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
 import { Row, Col, Divider } from 'antd';
-import { Card, Avatar } from 'antd';
-import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
-} from '@ant-design/icons';
-import { Layout, Menu } from 'antd';
+import { Card } from 'antd';
+import { Layout } from 'antd';
 import { Pagination } from 'antd';
 import { Button } from 'antd';
 import { InputNumber } from 'antd';
-import './cardsList.css';
-import App from '../../App';
 import { connect } from 'react-redux';
-// import createAction from '../../reducers/reducers';
+import './cardsList.css';
 
 const { Meta } = Card;
-const { Header, Content, Footer, Sider } = Layout;
-const style = { background: '#0092ff', padding: '8px 0' };
+const { Footer } = Layout;
 
 class CardsList extends Component {
   constructor(props) {
@@ -36,7 +28,7 @@ class CardsList extends Component {
     const { category } = this.props;
     return (
       <div className="container">
-        <Row gutter={[220, 29]} style={{ padding: '50px' }}>
+        <Row gutter={[220, 29]} style={{ padding: '200px' }}>
           {this.state.posts
             .filter((el) => !category || el.category === category)
             .map((post, i) => (
@@ -44,6 +36,7 @@ class CardsList extends Component {
                 <Card
                   style={{ width: 200 }}
                   cover={<img src={post.image} height="200" width="200" />}
+                  // height="200" width="200"
                   actions={[
                     <InputNumber min={1} max={100000} defaultValue={1} />,
                     <Button type="primary">Add to cart</Button>,
@@ -69,7 +62,7 @@ class CardsList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  category: state.currentCategorie,
+  category: state.products.currentCategorie,
 });
 
 export default connect(mapStateToProps)(CardsList);

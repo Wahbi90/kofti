@@ -1,7 +1,7 @@
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { connect } from 'react-redux';
 import React from 'react';
-import { changeCategory } from '../../reducers/reducers';
+import { changeCategory } from '../../redux/products/productsActions';
 import {
   AppstoreOutlined,
   BarChartOutlined,
@@ -26,6 +26,7 @@ function Sidebar({ changeCategory }) {
           position: 'fixed',
           left: 0,
           padding: '61px 0px 0px',
+          zIndex: 1,
         }}
       >
         <div className="logo" />

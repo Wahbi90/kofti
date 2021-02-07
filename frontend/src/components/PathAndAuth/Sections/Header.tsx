@@ -2,12 +2,12 @@ import React, { FC, AriaAttributes, DOMAttributes } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Button from '../UI/Button';
-import { RootState } from '../../store';
-import { signout } from '../../store/actions/authActions';
+import { signout } from '../../../redux/auth/authActions';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {  ShoppingTwoTone } from '@ant-design/icons';
 import { InputNumber } from 'antd';
 import './Header.css'
+import { RootState } from '../../../store';
 
 const Headers: FC = () => {
     const history = useHistory();
