@@ -19,6 +19,7 @@ const { SubMenu } = Menu;
 function Sidebar({ changeCategory }) {
   return (
     <Layout>
+      {/* <img class="logo" src="logo.png" alt="FreshkyLogo" /> */}
       <Sider
         style={{
           overflow: 'auto',

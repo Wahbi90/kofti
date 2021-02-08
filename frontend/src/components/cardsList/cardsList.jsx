@@ -28,7 +28,7 @@ class CardsList extends Component {
     const { category } = this.props;
     return (
       <div className="container">
-        <Row gutter={[220, 29]} style={{ padding: '200px' }}>
+        <Row gutter={[220, 39]} style={{ padding: '200px' }}>
           {this.state.posts
             .filter((el) => !category || el.category === category)
             .map((post, i) => (
@@ -51,7 +51,11 @@ class CardsList extends Component {
             ))}
         </Row>
         <Divider orientation="left"></Divider>
-        <Pagination defaultCurrent={1} total={500} />
+        <Pagination
+          defaultCurrent={1}
+          total={500}
+          style={{ paddingLeft: '500px' }}
+        />
         <Divider orientation="left"></Divider>
         <Footer style={{ textAlign: 'center' }}>
           Freshky ©2021 Created by R.M.A.M.S

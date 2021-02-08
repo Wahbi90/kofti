@@ -11,6 +11,7 @@ import PrivateRoute from './components/PathAndAuth/auth/PrivateRoute';
 import PublicRoute from './components/PathAndAuth/auth/PublicRoute';
 import Loader from './components/PathAndAuth/UI/Loader';
 import firebase from './firebase/config';
+import Home from './components/home/home';
 import {
   getUserById,
   setLoading,
@@ -52,8 +53,8 @@ const App = () => {
       <Switch>
         <PublicRoute exact path="/">
           <Sidebar />
+          <Home />
           <CardsList />
-          {/* <Home /> */}
         </PublicRoute>
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <PublicRoute path="/signup" component={SignUp} />
