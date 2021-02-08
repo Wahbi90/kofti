@@ -53,7 +53,7 @@ const App = () => {
       <Switch>
         <PublicRoute exact path="/">
           <Sidebar />
-          <Home />
+          {/* <Home /> */}
           <CardsList />
         </PublicRoute>
         <PrivateRoute path="/dashboard" component={Dashboard} />
