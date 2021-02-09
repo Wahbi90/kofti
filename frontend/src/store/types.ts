@@ -42,7 +42,7 @@ interface setUserAction {
     payload : User
 }
 
-interface setLoadingAction {
+export interface setLoadingAction {
     type : typeof SET_LOADING;
     payload : boolean
 }
@@ -65,4 +65,4 @@ interface setSuccessAction{
     payload : string;
 }
 
-export type AuthAction = setUserAction | setLoadingAction | signOutAction | setErrorAction | needVerificationAction | setSuccessAction;
+export type AuthAction = setUserAction | setLoadingAction | signOutAction | setErrorAction | needVerificationAction | setSuccessAction 

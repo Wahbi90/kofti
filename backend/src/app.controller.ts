@@ -8,7 +8,6 @@ export class AppController {
   @Get()
   async getHello(): Promise<any> {
     var res = await axios.get('https://fakestoreapi.com/products')
-    console.log(res.data.results)
     return res.data.results;
   }
 }
