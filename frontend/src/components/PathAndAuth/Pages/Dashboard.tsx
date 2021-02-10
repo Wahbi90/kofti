@@ -7,6 +7,7 @@ const Dashboard = () => {
   const { user, needVerification, success } = useSelector(
     (state: RootState) => state.auth,
   );
+  
   const dispatch = useDispatch();
 
   useEffect(() => {

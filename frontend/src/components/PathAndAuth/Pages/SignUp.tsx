@@ -5,7 +5,7 @@ import Input from '../UI/Input';
 import Button from '../UI/Button';
 import Message from '../UI/message';
 import { signup, setError, setLoading } from '../../../redux/auth/authActions';
-import { RootState } from '../../..';
+import { RootState } from '../../../store';
 
 const SignUp = () => {
     const [firstName, setFirstName] = useState ('');
