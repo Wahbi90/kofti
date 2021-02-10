@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import Switch from 'react-bootstrap/esm/Switch';
 import { connect } from 'react-redux';
 import {
   Route,

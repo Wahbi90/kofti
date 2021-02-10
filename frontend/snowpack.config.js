@@ -13,9 +13,6 @@ module.exports = {
     /* Example: Bundle your final build: */
     // "bundle": true,
   },
-  packageOptions: {
-    "knownEntrypoints": [""]
-  },
   devOptions: {
     /* ... */
   },
