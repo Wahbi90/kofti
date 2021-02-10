@@ -7,6 +7,8 @@ import { Button } from 'antd';
 import { InputNumber } from 'antd';
 import { connect } from 'react-redux';
 import './cardsList.css';
+// import RootState from '../../store'
+// import changeCategory from '../../redux/products/productsActions'
 
 const { Meta } = Card;
 const { Footer } = Layout;
@@ -15,21 +17,24 @@ class CardsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: [],
+      category: [],
+      products: [],
     };
   }
   componentWillMount() {
     fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
-      .then((data) => this.setState({ posts: data }));
+      .then((data) => this.setState({ products: data }));
   }
 
   render() {
     const { category } = this.props;
+    console.log(this.props, 'from zebi');
+    console.log('from cardlist', this.props);
     return (
       <div className="container">
         <Row gutter={[220, 39]} style={{ padding: '200px' }}>
-          {this.state.posts
+          {this.state.products
             .filter((el) => !category || el.category === category)
             .map((post, i) => (
               <Col key={i} className="gutter-row" span={4}>

@@ -16,7 +16,10 @@ export const fetchProducts = () => (dispatch) => {
     .catch((err) =>
       fetch('db.json')
         .then((res) => res.json())
-        .then((data) => data.products),
+        .then((data) => {
+          console.log(data, 'from fetching qt fetch products');
+          data.products;
+        }),
     )
     .then((data) => {
       dispatch({ type: FETCH_PRODUCTS, payload: data });

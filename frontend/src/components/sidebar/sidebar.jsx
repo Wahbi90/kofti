@@ -15,7 +15,6 @@ import {
 // import postItems from '../../App';
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
-
 function Sidebar({ changeCategory }) {
   return (
     <Layout>
@@ -52,14 +51,11 @@ function Sidebar({ changeCategory }) {
             </Menu.Item>
             {/* <Menu.Item key="6">option6</Menu.Item> */}
           </SubMenu>
-
           <SubMenu key="3" icon={<ShopOutlined />} title="food"></SubMenu>
         </Menu>
       </Sider>
     </Layout>
   );
 }
-
 const mapDispatchToProps = { changeCategory };
-
 export default connect(null, mapDispatchToProps)(Sidebar);

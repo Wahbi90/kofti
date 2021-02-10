@@ -14,7 +14,7 @@ module.exports = {
     // "bundle": true,
   },
   packageOptions: {
-    /* ... */
+    "knownEntrypoints": [""]
   },
   devOptions: {
     /* ... */
