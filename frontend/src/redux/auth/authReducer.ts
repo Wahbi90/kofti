@@ -7,12 +7,12 @@ import {
   SET_ERROR,
   NEED_VERIFICATION,
   SET_SUCCESS,
-} from '../../redux/auth/authTypes';
+} from './authTypes';
 
 const initialState: AuthState = {
   user: null,
   authenticated: false,
-  loading: true,
+  loading: false,
   error: '',
   needVerification: false,
   success: '',

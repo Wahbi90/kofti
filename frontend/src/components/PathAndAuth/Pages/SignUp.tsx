@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
 import Message from '../UI/message';
-import { signup, setError, setLoading } from '../../../store/actions/authActions';
+import { signup, setError, setLoading } from '../../../redux/auth/authActions';
 import { RootState } from '../../../store';
 
 const SignUp = () => {

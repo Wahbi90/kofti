@@ -4,11 +4,7 @@ import { Link } from 'react-router-dom';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
 import Message from '../UI/message';
-import {
-  signin,
-  setError,
-  setLoading,
-} from '../../../store/actions/authActions';
+import { signin, setError, setLoading } from '../../../redux/auth/authActions';
 import { RootState } from '../../../store';
 
 const SIgnIn = () => {

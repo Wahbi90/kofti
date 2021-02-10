@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { addToCart, removeFromCart } from "../actions/cartActions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addToCart, removeFromCart } from '../../store/cart/cartActions';
 
 class Basket extends Component {
   render() {
@@ -9,7 +9,7 @@ class Basket extends Component {
     return (
       <div className="alert alert-info">
         {cartItems.length === 0 ? (
-          "Basket is empty"
+          'Basket is empty'
         ) : (
           <div>
             You have {cartItems.length} items in the basket. <hr />
@@ -22,7 +22,7 @@ class Basket extends Component {
                 <li key={item.id}>
                   <b>{item.title}</b>
                   <button
-                    style={{ float: "right" }}
+                    style={{ float: 'right' }}
                     className="btn btn-danger btn-xs"
                     onClick={(e) =>
                       this.props.removeFromCart(this.props.cartItems, item)
@@ -37,13 +37,13 @@ class Basket extends Component {
             </ul>
 
             <b>
-              Sum:{" "}
+              Sum:{' '}
               {util.formatCurrency(
-                cartItems.reduce((a, c) => a + c.price * c.count, 0)
+                cartItems.reduce((a, c) => a + c.price * c.count, 0),
               )}
             </b>
             <button
-              onClick={() => alert("Todo: Implement checkout page.")}
+              onClick={() => alert('Todo: Implement checkout page.')}
               className="btn btn-primary"
             >
               checkout

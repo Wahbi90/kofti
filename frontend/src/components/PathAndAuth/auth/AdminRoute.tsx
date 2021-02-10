@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom';
 import { RootState } from '../../../store';
 import authReducers from '../../../store/reducers/authReducers';
-import { User } from '../../../store/types';
+import { User } from '../../../redux/auth/authTypes';
 
 interface Props extends RouteProps {
   component: any;

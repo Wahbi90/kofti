@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Redirect, RouteProps } from 'react-router-dom';
 import { RootState } from '../../../store';
-import { User } from '../../../store/types'
+import { User } from '../../../redux/auth/authTypes'
 
 interface Props extends RouteProps {
     component: any;
