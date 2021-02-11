@@ -50,7 +50,7 @@ function Home() {
               <div>
                 <h3 style={contentStyle}>1</h3>
               </div>
-              <div>
+              <div>  
                 <h3 style={contentStyle}>2</h3>
               </div>
               <div>

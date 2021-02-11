@@ -3,10 +3,12 @@ import { Tabs } from 'antd';
 import { Layout, Menu } from 'antd';
 import  {Select} from 'antd';  
 import { Input, Space } from 'antd';
-import Adminproducts from './adminProduct'
-import Admincategories from  './adminCategories'
-export default function Admin() {
-    
+import Adminproducts from './adminProduct';
+import Admincategories from  './adminCategories';
+
+
+
+export default function Admin() {    
 const { Option } = Select;
 const { Header, Content, Footer } = Layout;
 const { Search } = Input;

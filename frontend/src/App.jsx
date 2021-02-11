@@ -44,7 +44,7 @@ const App = ({ getUser, user }) => {
           <PublicRoute exact path="/">
           <Sidebar />
           <CardsList />
-            <Home />
+            {/* <Home /> */}
           </PublicRoute>
           <AdminRoute path="/admin" component={Admin} />
           <PrivateRoute path="/home" component={Home} />

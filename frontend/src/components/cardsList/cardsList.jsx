@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Divider } from 'antd';
-import { Card } from 'antd';
-import { Layout } from 'antd';
-import { Pagination } from 'antd';
-import { Button } from 'antd';
-import { InputNumber } from 'antd';
+import { Card,Space ,Layout, Pagination, InputNumber, Button, Row, Col, Divider   } from 'antd';
 import { connect } from 'react-redux';
 import './cardsList.css';
 // import RootState from '../../store'
@@ -19,6 +14,7 @@ class CardsList extends Component {
     this.state = {
       category: [],
       products: [],
+      size:'large',
     };
   }
   componentWillMount() {
@@ -29,18 +25,28 @@ class CardsList extends Component {
 
   render() {
     const { category } = this.props;
-    console.log(this.props, 'from zebi');
     console.log('from cardlist', this.props);
     return (
-      <div className="container">
-        <Row gutter={[220, 39]} style={{ padding: '200px' }}>
+      <div className="container" >
+        
+        <Row justify="space-between"  style={{
+      alignItems:'flex-end',
+      display: 'flex',
+      gap:'0px normal',
+      justifycontent:'flex-end',
+      margin: '0px 4px 1px 5px',
+      padding: '201px 201px 202px 206px'
+      }} >
+        <Space size={[8, 16]} wrap>
           {this.state.products
             .filter((el) => !category || el.category === category)
             .map((post, i) => (
-              <Col key={i} className="gutter-row" span={4}>
+              
+              <Col  span={4}>
+                <Space size={this.state.size} >
                 <Card
-                  style={{ width: 200 }}
-                  cover={<img src={post.image} height="200" width="200" />}
+                  style={{ width: 200, height: 200 }}
+                  cover={<img src={post.image} style={{ width: 200, height: 200 }} />}
                   // height="200" width="200"
                   actions={[
                     <InputNumber min={1} max={100000} defaultValue={1} />,
@@ -52,9 +58,14 @@ class CardsList extends Component {
                     description={<h3>{post.price}</h3>}
                   />
                 </Card>
+                </Space>
+                
               </Col>
+               
             ))}
+           </Space>
         </Row>
+        
         <Divider orientation="left"></Divider>
         <Pagination
           defaultCurrent={1}
@@ -65,6 +76,7 @@ class CardsList extends Component {
         <Footer style={{ textAlign: 'center' }}>
           Freshky ©2021 Created by R.M.A.M.S
         </Footer>
+        
       </div>
     );
   }
