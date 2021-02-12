@@ -24,9 +24,10 @@ class Basket extends Component {
                   <button
                     style={{ float: 'right' }}
                     className="btn btn-danger btn-xs"
-                    onClick={(e) =>
-                      this.props.removeFromCart(this.props.cartItems, item)
-                    }
+                    onClick={(e) => {
+                      this.props.removeFromCart(this.props.cartItems, item);
+                      console.log(item);
+                    }}
                   >
                     X
                   </button>
