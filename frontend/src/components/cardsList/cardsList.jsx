@@ -18,9 +18,11 @@ class CardsList extends Component {
     };
   }
   componentWillMount() {
-    fetch('https://fakestoreapi.com/products')
+    fetch('http://localhost:8081/product')
       .then((res) => res.json())
-      .then((data) => this.setState({ products: data }));
+      .then((data) => {
+        console.log(data)
+        this.setState({ products: data })});
   }
 
   render() {
@@ -30,20 +32,19 @@ class CardsList extends Component {
       <div className="container" >
         
         <Row justify="space-between"  style={{
-      alignItems:'flex-end',
-      display: 'flex',
-      gap:'0px normal',
-      justifycontent:'flex-end',
-      margin: '0px 4px 1px 5px',
-      padding: '201px 201px 202px 206px'
+      // alignItems:'flex-end',
+      // display: 'flex',
+      // gap:'0px normal',
+      // justifycontent:'flex-end',
+      // margin: '0px 4px 1px 5px',
+      // padding: '201px 201px 202px 206px'
       }} >
-        <Space size={[8, 16]} wrap>
+         
           {this.state.products
             .filter((el) => !category || el.category === category)
             .map((post, i) => (
-              
-              <Col  span={4}>
-                <Space size={this.state.size} >
+            
+              <Col key={i} span={4}>
                 <Card
                   style={{ width: 200, height: 200 }}
                   cover={<img src={post.image} style={{ width: 200, height: 200 }} />}
@@ -58,12 +59,13 @@ class CardsList extends Component {
                     description={<h3>{post.price}</h3>}
                   />
                 </Card>
-                </Space>
                 
               </Col>
+              
                
             ))}
-           </Space>
+      
+        
         </Row>
         
         <Divider orientation="left"></Divider>
@@ -87,12 +89,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(CardsList);
-// <img key={i} src={post.image} />
-
-// <div key={post.id}>
-//   {/* <div>{post.image}</div> */}
-//   <h2>{post.title}</h2>
-//   <h3>{post.category}</h3>
-//   <h5>{post.description}</h5>
-//   <h3>{post.price}</h3>
-// </div>

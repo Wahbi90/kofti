@@ -54,6 +54,7 @@ const App = ({ getUser, user }) => {
         </Switch>
       </Loader>
     </BrowserRouter>
+  
   );
 };
 
