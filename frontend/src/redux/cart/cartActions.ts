@@ -27,8 +27,14 @@ export const addToCart = (items, product) => (dispatch) => {
 };
 
 export const removeFromCart = (items, product) => (dispatch) => {
+  var sum = 0;
   const cartItems = items.slice().filter((a) => a.title !== product.title);
 
   localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  cartItems.map((el) => {
+    sum = sum + el.price * el.count;
+  });
+  console.log('from remove', sum);
+  localStorage.setItem('sum', JSON.stringify(sum));
   dispatch({ type: REMOVE_FROM_CART, payload: { cartItems } });
 };

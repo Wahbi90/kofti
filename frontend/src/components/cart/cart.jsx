@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addToCart, removeFromCart } from '../../redux/cart/cartActions';
-var sum = 0;
+import { Redirect, Router, withRouter } from 'react-router-dom';
+
 class Basket extends Component {
+  checkout() {
+    this.props.history.push('/checkout');
+  }
   render() {
     const { cartItems } = this.props;
 
@@ -39,12 +43,7 @@ class Basket extends Component {
             </ul>
 
             <b>Total:{localStorage.getItem('sum')}</b>
-            <button
-              onClick={() => alert('Todo: Implement checkout page.')}
-              className="btn btn-primary"
-            >
-              checkout
-            </button>
+            <button onClick={this.checkout.bind(this)}>CheckOut</button>
           </div>
         )}
       </div>
@@ -54,4 +53,6 @@ class Basket extends Component {
 const mapStateToProps = (state) => ({
   cartItems: state.cart.items,
 });
-export default connect(mapStateToProps, { addToCart, removeFromCart })(Basket);
+export default connect(mapStateToProps, { addToCart, removeFromCart })(
+  withRouter(Basket),
+);
