@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addToCart, removeFromCart } from '../../redux/cart/cartActions';
-
+var sum = 0;
 class Basket extends Component {
   render() {
     const { cartItems } = this.props;
@@ -33,11 +33,12 @@ class Basket extends Component {
                   </button>
                   <br />
                   {item.count} X {item.price}
+                  {/* {console.log('idek fi zebi', sum)} */}
                 </li>
               ))}
             </ul>
 
-            <b>Total: </b>
+            <b>Total:{localStorage.getItem('sum')}</b>
             <button
               onClick={() => alert('Todo: Implement checkout page.')}
               className="btn btn-primary"
