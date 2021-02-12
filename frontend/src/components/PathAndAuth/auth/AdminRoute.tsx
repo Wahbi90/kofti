@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import {
   Route,
   Redirect,
@@ -10,6 +10,7 @@ import {
 import { RootState } from '../../../store';
 import authReducers from '../../../store/reducers/authReducers';
 import { User } from '../../../redux/auth/authTypes';
+import { setError } from '../../../redux/auth/authActions';
 
 interface Props extends RouteProps {
   component: any;
@@ -28,16 +29,18 @@ const AdminRoute: FC<Props & PropsFromState> = ({
   authenticated,
   ...rest
 }) => {
+  const dispatch = useDispatch();
   return (
     <Route
       {...rest}
       render={(props) => {
-        return authenticated && user.types ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to="/" />
-        );
+        if (authenticated && user.types) return <Component {...props} />;
+        else {
+          dispatch(setError('You need to be an admin to acces this page'));
+          return <Redirect to="/signin" />;
+        }
       }}
+
     />
   );
 };
