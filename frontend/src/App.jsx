@@ -25,6 +25,10 @@ import {
 } from './redux/auth/authActions';
 // import { RootState } from './store';
 import SIgnIn from './components/PathAndAuth/Pages/SignIn';
+import CheckoutRoute from './components/PathAndAuth/auth/CheckoutRoute';
+import Checkout from './components/PathAndAuth/Pages/Checkout';
+import Payment from './components/PathAndAuth/Pages/Payment';
+import PaymentRoute from './components/PathAndAuth/auth/PaymentRoute';
 
 // const App = () => {
 
@@ -48,6 +52,8 @@ const App = ({ getUser, user }) => {
           </PublicRoute>
           <AdminRoute path="/admin" component={Admin} />
           <PrivateRoute path="/home" component={Home} />
+          <CheckoutRoute path="/checkout" component={Checkout} />
+          <PaymentRoute path="/payment" component={Payment} />
           <PublicRoute path="/signup" component={SignUp} />
           <PublicRoute path="/signin" component={SIgnIn} />
           <PublicRoute path="/forgot-password" component={ForgotPassword} />
