@@ -15,7 +15,8 @@ import { getUser } from './store/actions/authActions';
 import Admin from './components/PathAndAuth/Pages/Admin';
 import firebase from './firebase/config';
 import Home from './components/home/home';
-import CardsList from './components/cardsList/cardsList'
+import Cart from './components/cart/cart';
+import CardsList from './components/cardsList/cardsList';
 import { Layout } from 'antd';
 import {
   getUserById,
@@ -26,8 +27,6 @@ import {
 import SIgnIn from './components/PathAndAuth/Pages/SignIn';
 
 // const App = () => {
-
-
 
 const App = ({ getUser, user }) => {
   // const { Header, Content, Footer } = Layout;
@@ -42,8 +41,9 @@ const App = ({ getUser, user }) => {
         <Headers />
         <Switch>
           <PublicRoute exact path="/">
-          <Sidebar />
-          <CardsList />
+            <Sidebar />
+            <Cart />
+            <CardsList />
             {/* <Home /> */}
           </PublicRoute>
           <AdminRoute path="/admin" component={Admin} />
@@ -56,7 +56,6 @@ const App = ({ getUser, user }) => {
     </BrowserRouter>
   );
 };
-
 
 const mapStateToProps = ({ auth: { loading, user } }) => ({
   loading,

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addToCart, removeFromCart } from '../../store/cart/cartActions';
+import { addToCart, removeFromCart } from '../../redux/cart/cartActions';
 
 class Basket extends Component {
   render() {
@@ -36,12 +36,7 @@ class Basket extends Component {
               ))}
             </ul>
 
-            <b>
-              Sum:{' '}
-              {util.formatCurrency(
-                cartItems.reduce((a, c) => a + c.price * c.count, 0),
-              )}
-            </b>
+            <b>Total: </b>
             <button
               onClick={() => alert('Todo: Implement checkout page.')}
               className="btn btn-primary"
