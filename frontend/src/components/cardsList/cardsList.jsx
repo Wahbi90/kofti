@@ -29,7 +29,9 @@ class CardsList extends Component {
   componentWillMount() {
     fetch('http://localhost:8081/product')
       .then((res) => res.json())
-      .then((data) => this.setState({ products: data }));
+      .then((data) => {
+        console.log(data)
+        this.setState({ products: data })});
   }
   // handleClick = (e) => {
   //   console.log('hey');
@@ -39,17 +41,17 @@ class CardsList extends Component {
     const { category } = this.props;
     console.log('from cardlist', this.props);
     return (
-      <div className="container">
-        <Row
-          justify="space-between"
-          style={{
-            alignItems: 'flex-end',
-            display: 'flex',
-            gap: '0px normal',
-            justifycontent: 'flex-end',
-            margin: '0px 4px 1px 5px',
-            padding: '201px 201px 202px 206px',
-          }}
+      <div className="container" >
+        <Row style={{marginLeft: 200,marginTop: 100}}
+          // justify="space-between"
+          // style={{
+          //   alignItems: 'flex-end',
+          //   display: 'flex',
+          //   gap: '0px normal',
+          //   justifycontent: 'flex-end',
+          //   margin: '0px 4px 1px 5px',
+          //   padding: '201px 201px 202px 206px',
+          // }}
         >
           <Space size={[8, 16]} wrap>
             {this.state.products
@@ -58,11 +60,17 @@ class CardsList extends Component {
                 <Col key={i} span={4}>
                   <Space size={this.state.size}>
                     <Card
-                      style={{ width: 200, height: 200 }}
+                      style={{marginRight: 50,  width: 100, height: 100 ,  
+                      }}
                       cover={
                         <img
                           src={post.image}
-                          style={{ width: 200, height: 200 }}
+                          style={{ 
+                           width:200,
+                           height:100,
+                           alignContent: "center"
+
+                           }}
                         />
                       }
                       // height="200" width="200"
@@ -77,8 +85,9 @@ class CardsList extends Component {
                         </Button>,
                       ]}
                     >
-                      <Meta
-                        title={post.title}
+                      <Meta style={{ fontSize : 10 , marginBottoms: -100}}
+                        title={<h6 style={{fontSize: 10, alignItems:'left'}}>{post.title}</h6>}
+                        
                         description={<h3>{post.price}</h3>}
                       />
                     </Card>
@@ -92,6 +101,7 @@ class CardsList extends Component {
         <Pagination
           defaultCurrent={1}
           total={500}
+          
           style={{ paddingLeft: '500px' }}
         />
         <Divider orientation="left"></Divider>

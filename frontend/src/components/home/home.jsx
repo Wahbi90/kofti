@@ -37,7 +37,7 @@ function Home() {
   return (
     <Layout>
       <Layout>
-        <Layout style={{ padding: '0 1px 50px' }}>
+        <Layout style={{ padding: ' 50px 0px' }}>
           <Content
             className="site-layout-background"
             style={{
