@@ -15,7 +15,8 @@ import { getUser } from './store/actions/authActions';
 import Admin from './components/PathAndAuth/Pages/Admin';
 import firebase from './firebase/config';
 import Home from './components/home/home';
-import CardsList from './components/cardsList/cardsList'
+import Cart from './components/cart/cart';
+import CardsList from './components/cardsList/cardsList';
 import { Layout } from 'antd';
 import {
   getUserById,
@@ -24,10 +25,13 @@ import {
 } from './redux/auth/authActions';
 // import { RootState } from './store';
 import SIgnIn from './components/PathAndAuth/Pages/SignIn';
+import CheckoutRoute from './components/PathAndAuth/auth/CheckoutRoute';
+import Checkout from './components/PathAndAuth/Pages/Checkout';
+import Payment from './components/PathAndAuth/Pages/Payment';
+import PaymentRoute from './components/PathAndAuth/auth/PaymentRoute';
+import Areas from './components/areas/areas.js'
 
 // const App = () => {
-
-
 
 const App = ({ getUser, user }) => {
   // const { Header, Content, Footer } = Layout;
@@ -42,21 +46,26 @@ const App = ({ getUser, user }) => {
         <Headers />
         <Switch>
           <PublicRoute exact path="/">
-          <Sidebar />
-          <CardsList />
+            <Sidebar />
+            <Cart />
+              {/* <Areas /> */}
+            <CardsList />
+          
             {/* <Home /> */}
           </PublicRoute>
           <AdminRoute path="/admin" component={Admin} />
           <PrivateRoute path="/home" component={Home} />
+          <CheckoutRoute path="/checkout" component={Checkout} />
+          <PaymentRoute path="/payment" component={Payment} />
           <PublicRoute path="/signup" component={SignUp} />
           <PublicRoute path="/signin" component={SIgnIn} />
           <PublicRoute path="/forgot-password" component={ForgotPassword} />
         </Switch>
       </Loader>
     </BrowserRouter>
+  
   );
 };
-
 
 const mapStateToProps = ({ auth: { loading, user } }) => ({
   loading,
