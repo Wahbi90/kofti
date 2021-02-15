@@ -26,8 +26,12 @@ class CardsList extends Component {
       size: 'large',
     };
   }
+  
   componentWillMount() {
+
+
     fetch('http://localhost:8081/product')
+
       .then((res) => res.json())
       .then((data) => {
         console.log(data)
@@ -42,6 +46,7 @@ class CardsList extends Component {
     console.log('from cardlist', this.props);
     return (
       <div className="container" >
+
         <Row style={{marginLeft: 200,marginTop: 100}}
           // justify="space-between"
           // style={{
@@ -95,6 +100,7 @@ class CardsList extends Component {
                 </Col>
               ))}
           </Space>
+
         </Row>
 
         <Divider orientation="left"></Divider>
