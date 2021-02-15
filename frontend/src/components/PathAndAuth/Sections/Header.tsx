@@ -22,7 +22,7 @@ const Headers: FC = () => {
 
   return (
     <Layout>
-      <Header style={{ background: 'inear-gradient(135deg, #c3cfe2 0%, #c3cfe2 100%)' , position: 'fixed', zIndex: 1, width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
+      <Header style={{ background: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)' , position: 'fixed', zIndex: 1, width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
         <div className="logo" />
 
         {/* <Menu id='nevmenu' theme="dark" mode="horizontal" defaultSelectedKeys={['2']}> */}

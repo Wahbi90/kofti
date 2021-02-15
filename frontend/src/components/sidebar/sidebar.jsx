@@ -1,4 +1,4 @@
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Breadcrumb,  Input } from 'antd';
 import { connect } from 'react-redux';
 import React from 'react';
 import { changeCategory } from '../../redux/products/productsActions';
@@ -28,11 +28,15 @@ function Sidebar({ changeCategory }) {
           padding: '61px 0px 0px',
           zIndex: 1,
           margin: '64px 0px 6px',
-          background: 'white'
+          background: 'white',
+          border: '#d4d2d270',
+          borderStyle: 'groove',
+          borderWidth: '1px',
 
         }}
       >
         <div className="logo" />
+        <Input placeholder="Basic usage" />
         <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
           <SubMenu key="1" icon={<UserOutlined />} title="clothes">
             {/* <Menu.Item key="1">option1</Menu.Item> */}
@@ -40,7 +44,7 @@ function Sidebar({ changeCategory }) {
               Men Clothing
             </Menu.Item>
             <Menu.Item key="2" onClick={() => changeCategory('women clothing')}>
-              Men Clothing
+              Women Clothing
             </Menu.Item>
           </SubMenu>
           <SubMenu key="4" icon={<AppstoreOutlined />} title="accessoires">
