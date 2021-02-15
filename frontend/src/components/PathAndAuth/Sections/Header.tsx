@@ -83,7 +83,7 @@ const Headers: FC = () => {
         {/* </Menu> */}
         <div>
           {' '}
-      {console.log("danfous kh" ,items)}
+      {console.log("danfous khra et wahbi approve" ,items)}
           <Dropdown overlay={menu}>
             <button className="basketbasket">Basket{items.length}</button>
           </Dropdown>

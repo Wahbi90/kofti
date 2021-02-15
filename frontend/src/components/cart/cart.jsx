@@ -11,12 +11,11 @@ class Basket extends Component {
     const { cartItems } = this.props;
     return (
       <div className="alert alert-info">
-        {cartItems.length === 0 ? (
-          'Basket is empty'
-        ) : (
-          <div>
-            You have {cartItems.length} items in the basket. <hr />
-          </div>
+        {console.log('redux shit', cartItems)}
+        cartItems.length === 0 ? ( 'Basket is empty' ) : (
+        <div>
+          You have {cartItems.length} items in the basket. <hr />
+        </div>
         )}
         {cartItems.length > 0 && (
           <div>
