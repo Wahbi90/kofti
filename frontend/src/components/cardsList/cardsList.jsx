@@ -34,16 +34,16 @@ class CardsList extends Component {
 
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+       
         this.setState({ products: data })});
   }
   // handleClick = (e) => {
-  //   console.log('hey');
+  
   // };
 
   render() {
     const { category } = this.props;
-    console.log('from cardlist', this.props);
+    
     return (
       <div className="container" >
 

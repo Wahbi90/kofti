@@ -30,14 +30,14 @@ class Basket extends Component {
                     className="btn btn-danger btn-xs"
                     onClick={(e) => {
                       this.props.removeFromCart(this.props.cartItems, item);
-                      console.log(item);
+                   
                     }}
                   >
                     X
                   </button>
                   <br />
                   {item.count} X {item.price}
-                  {/* {console.log('idek fi zebi', sum)} */}
+              
                 </li>
               ))}
             </ul>

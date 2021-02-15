@@ -28,9 +28,9 @@ const layout = {
   };
   
 function callback(key) {
-    console.log(key);
+  
   }
-  const onSearch = value => console.log(value);
+  const onSearch = value => {}
 
 const { TabPane } = Tabs;
     return (
