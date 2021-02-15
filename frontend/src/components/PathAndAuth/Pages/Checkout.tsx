@@ -93,7 +93,8 @@ const Checkout = () => {
               }}
               billingAddress
               shippingAddress
-              // amount={}
+              amount={+localStorage.getItem('sum')}
+              name={localStorage.getItem('cartItems')}
             />
           </div>
         </form>
