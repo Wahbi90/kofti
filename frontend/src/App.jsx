@@ -46,7 +46,7 @@ const App = ({ getUser, user }) => {
         <Switch>
           <PublicRoute exact path="/">
             <Sidebar />
-            <Cart />
+            {/* <Cart /> */}
             <CardsList />
             {/* <Home /> */}
           </PublicRoute>

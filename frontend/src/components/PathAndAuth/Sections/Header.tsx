@@ -8,6 +8,10 @@ import { ShoppingTwoTone } from '@ant-design/icons';
 import { InputNumber } from 'antd';
 import './Header.css';
 import { RootState } from '../../../store';
+import Basket from '../../cart/cart';
+
+import { Dropdown, message, Space, Tooltip } from 'antd';
+import { DownOutlined, UserOutlined } from '@ant-design/icons';
 
 const Headers: FC = () => {
   const history = useHistory();
@@ -20,9 +24,32 @@ const Headers: FC = () => {
     dispatch(signout());
   };
 
+  // function handleMenuClick(e) {
+  //   message.info('Click on menu item.');
+  //   console.log('click', e);
+  // }
+
+  const menu = (
+    <Menu
+    // onClick={handleMenuClick}
+    >
+      <Menu.Item key="1" icon={<UserOutlined />}>
+        <Basket />
+      </Menu.Item>
+    </Menu>
+  );
+
   return (
     <Layout>
-      <Header style={{ position: 'fixed', zIndex: 1, width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
+      <Header
+        style={{
+          position: 'fixed',
+          zIndex: 1,
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'flex-end',
+        }}
+      >
         <div className="logo" />
 
         {/* <Menu id='nevmenu' theme="dark" mode="horizontal" defaultSelectedKeys={['2']}> */}
@@ -33,8 +60,15 @@ const Headers: FC = () => {
         {/* <InputNumber min={0} max={100000} defaultValue={0}  style={{height: '40px'}} />,   */}
         {!authenticated ? (
           <div className="buttons">
-            <div className="button-position" style={{display: 'flex', justifyContent: 'flex-start', margin:'1px 0px 8px', padding:
-'13px 50px 0px' }}>
+            <div
+              className="button-position"
+              style={{
+                display: 'flex',
+                justifyContent: 'flex-start',
+                margin: '1px 0px 8px',
+                // padding: '13px 50px 0px',
+              }}
+            >
               <Button
                 text="Sign Up"
                 onClick={() => history.push('/signup')}
@@ -44,11 +78,17 @@ const Headers: FC = () => {
             </div>
           </div>
         ) : (
-          <div id='Sign Out' style={{ padding:'13px 0px 3px'}}>
-          <Button text="Sign Out" onClick={logoutClickHandler} />
+          <div id="Sign Out" style={{ padding: '13px 0px 3px' }}>
+            <Button text="Sign Out" onClick={logoutClickHandler} />
           </div>
         )}
         {/* </Menu> */}
+        <div>
+          {' '}
+          <Dropdown overlay={menu}>
+            <button className="basketbasket">Basket</button>
+          </Dropdown>
+        </div>
       </Header>
     </Layout>
   );
