@@ -17,7 +17,7 @@ import firebase from './firebase/config';
 import Home from './components/home/home';
 import Cart from './components/cart/cart';
 import CardsList from './components/cardsList/cardsList';
-import { Layout } from 'antd';
+import { Layout, Menu } from 'antd';
 import {
   getUserById,
   setLoading,
@@ -59,6 +59,7 @@ const App = ({ getUser, user }) => {
           <PublicRoute path="/forgot-password" component={ForgotPassword} />
         </Switch>
       </Loader>
+      {/* <Menu/> */}
     </BrowserRouter>
   );
 };
