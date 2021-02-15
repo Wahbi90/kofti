@@ -24,11 +24,8 @@ const Headers: FC = () => {
     dispatch(signout());
   };
 
-  // function handleMenuClick(e) {
-  //   message.info('Click on menu item.');
-  //   console.log('click', e);
-  // }
-
+  var items = JSON.parse(localStorage.getItem('cartItems'));
+  
   const menu = (
     <Menu
     // onClick={handleMenuClick}
@@ -38,18 +35,19 @@ const Headers: FC = () => {
       </Menu.Item>
     </Menu>
   );
-
+  
   return (
     <Layout>
       <Header
         style={{
+          background: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
           position: 'fixed',
           zIndex: 1,
           width: '100%',
           display: 'flex',
           justifyContent: 'flex-end',
         }}
-      >
+        >
         <div className="logo" />
 
         {/* <Menu id='nevmenu' theme="dark" mode="horizontal" defaultSelectedKeys={['2']}> */}
@@ -68,12 +66,12 @@ const Headers: FC = () => {
                 margin: '1px 0px 8px',
                 // padding: '13px 50px 0px',
               }}
-            >
+              >
               <Button
                 text="Sign Up"
                 onClick={() => history.push('/signup')}
                 className="is-primary"
-              />
+                />
               <Button text="Sign In" onClick={() => history.push('/signin')} />
             </div>
           </div>
@@ -85,8 +83,9 @@ const Headers: FC = () => {
         {/* </Menu> */}
         <div>
           {' '}
+      {console.log("danfous kh" ,items)}
           <Dropdown overlay={menu}>
-            <button className="basketbasket">Basket</button>
+            <button className="basketbasket">Basket{items.length}</button>
           </Dropdown>
         </div>
       </Header>

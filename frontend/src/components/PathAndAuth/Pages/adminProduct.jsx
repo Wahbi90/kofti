@@ -144,7 +144,6 @@ class Adminproducts extends React.Component {
   };
 }
  async componentWillMount () {
-     console.log('hhhhhhhh')
     var res = await axios.get('https://fakestoreapi.com/products');
     console.log(res.data);
     this.setState({data : res.data})
@@ -296,9 +295,7 @@ class Adminproducts extends React.Component {
         <Divider orientation="left">Name</Divider>
           <Input placeholder="Product Name" />
           <br />
-          <Divider orientation="left">Quantity</Divider>
-          <Input placeholder="Quantity" />
-          <br />
+       
           <Divider orientation="left">Price</Divider>
           <Input placeholder="Price" />
           <br />
@@ -307,6 +304,19 @@ class Adminproducts extends React.Component {
           <br />
           <Divider orientation="left">categorie</Divider>
           <Cascader   placeholder="Please select categorie" />
+
+          <Divider orientation="left">pictures</Divider>
+
+          <Space>
+      <Upload
+      action="data"
+      listType="url"
+      defaultFileList={[url]}
+      className="upload-list-inline"
+    >
+      <Button icon={<UploadOutlined />}>Upload</Button>
+    </Upload>
+    </Space>
 
         </Modal>
       <h6 style={{fontSize:'30px'}}>products :</h6>

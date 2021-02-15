@@ -29,8 +29,10 @@ import CheckoutRoute from './components/PathAndAuth/auth/CheckoutRoute';
 import Checkout from './components/PathAndAuth/Pages/Checkout';
 import Payment from './components/PathAndAuth/Pages/Payment';
 import PaymentRoute from './components/PathAndAuth/auth/PaymentRoute';
+import Areas from './components/areas/areas.js';
 
 // const App = () => {
+
 
 const App = ({ getUser, user }) => {
   // const { Header, Content, Footer } = Layout;
@@ -39,6 +41,7 @@ const App = ({ getUser, user }) => {
   useEffect(() => {
     getUser();
   }, []);
+
   return (
     <BrowserRouter>
       <Loader shouldLoad={loading}>
@@ -47,7 +50,10 @@ const App = ({ getUser, user }) => {
           <PublicRoute exact path="/">
             <Sidebar />
             {/* <Cart /> */}
+            {/* <Cart /> */}
+            {/* <Areas /> */}
             <CardsList />
+
             {/* <Home /> */}
           </PublicRoute>
           <AdminRoute path="/admin" component={Admin} />
