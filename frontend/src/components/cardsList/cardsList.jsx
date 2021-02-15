@@ -17,10 +17,13 @@ class CardsList extends Component {
       size:'large',
     };
   }
+  
   componentWillMount() {
-    fetch('https://fakestoreapi.com/products')
+    fetch('http://localhost:8080/product')
       .then((res) => res.json())
-      .then((data) => this.setState({ products: data }));
+      .then((data) => {
+        console.log(data)
+        this.setState({ products: data })});
   }
 
   render() {
@@ -42,7 +45,7 @@ class CardsList extends Component {
             .filter((el) => !category || el.category === category)
             .map((post, i) => (
               
-              <Col  span={4}>
+              <Col  key={i}  span={4}>
                 <Space size={this.state.size} >
                 <Card
                   style={{ width: 200, height: 200 }}
