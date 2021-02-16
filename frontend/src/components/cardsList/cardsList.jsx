@@ -24,6 +24,7 @@ class CardsList extends Component {
       category: [],
       products: [],
       size: 'large',
+      sub: 0,
     };
   }
 
@@ -35,6 +36,10 @@ class CardsList extends Component {
         this.setState({ products: data });
       });
   }
+  handelchange = (e) => {
+    console.log('yuiiiiiiiiiiiiiiii', e);
+    this.setState({ sub: e });
+  };
 
   render() {
     const { category } = this.props;
@@ -74,7 +79,12 @@ class CardsList extends Component {
                       }
                       // height="200" width="200"
                       actions={[
-                        <InputNumber min={1} max={100000} defaultValue={1} />,
+                        <InputNumber
+                          min={1}
+                          max={100000}
+                          defaultValue={1}
+                          onChange={this.handelchange}
+                        />,
                         <Button
                           onClick={() => {
                             this.props.addToCart(this.props.cartItems, post);

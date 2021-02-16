@@ -25,7 +25,7 @@ const Headers: FC = () => {
   };
 
   var items = JSON.parse(localStorage.getItem('cartItems'));
-  
+
   const menu = (
     <Menu
     // onClick={handleMenuClick}
@@ -35,7 +35,7 @@ const Headers: FC = () => {
       </Menu.Item>
     </Menu>
   );
-  
+
   return (
     <Layout>
       <Header
@@ -47,7 +47,7 @@ const Headers: FC = () => {
           display: 'flex',
           justifyContent: 'flex-end',
         }}
-        >
+      >
         <div className="logo" />
 
         {/* <Menu id='nevmenu' theme="dark" mode="horizontal" defaultSelectedKeys={['2']}> */}
@@ -66,12 +66,12 @@ const Headers: FC = () => {
                 margin: '1px 0px 8px',
                 // padding: '13px 50px 0px',
               }}
-              >
+            >
               <Button
                 text="Sign Up"
                 onClick={() => history.push('/signup')}
                 className="is-primary"
-                />
+              />
               <Button text="Sign In" onClick={() => history.push('/signin')} />
             </div>
           </div>
@@ -83,9 +83,9 @@ const Headers: FC = () => {
         {/* </Menu> */}
         <div>
           {' '}
-      {console.log("danfous khra et wahbi approve" ,items)}
+          {console.log('danfous khra and wahbi approves', items)}
           <Dropdown overlay={menu}>
-            <button className="basketbasket">Basket{items.length}</button>
+            <button className="basketbasket">🛒</button>
           </Dropdown>
         </div>
       </Header>

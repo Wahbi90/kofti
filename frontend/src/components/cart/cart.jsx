@@ -11,11 +11,12 @@ class Basket extends Component {
     const { cartItems } = this.props;
     return (
       <div className="alert alert-info">
-        {console.log('redux shit', cartItems)}
-        cartItems.length === 0 ? ( 'Basket is empty' ) : (
-        <div>
-          You have {cartItems.length} items in the basket. <hr />
-        </div>
+        {cartItems.length === 0 ? (
+          'Basket is empty'
+        ) : (
+          <div className="itemsBasket">
+            You have {cartItems.length} items in the basket. <hr />
+          </div>
         )}
         {cartItems.length > 0 && (
           <div>
@@ -40,13 +41,16 @@ class Basket extends Component {
               ))}
             </ul>
 
-            <b>Total:{localStorage.getItem('sum')}</b>
-            <button onClick={this.checkout.bind(this)}>CheckOut</button>
+            <br></br>
             <h2>
+              Total Quantity :
               {cartItems.reduce(function (t, el, i) {
                 return (t += el.count);
               }, 0)}
             </h2>
+            <b className="total">Total:{localStorage.getItem('sum')}</b>
+            <br></br>
+            <button onClick={this.checkout.bind(this)}>CheckOut</button>
           </div>
         )}
       </div>

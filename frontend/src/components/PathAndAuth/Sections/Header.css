@@ -42,3 +42,29 @@
   /* z-index: -1; */
   /* transition: 0.8s; */
 }
+
+/* .alert-info {
+  padding: 0 2px;
+  margin-left: 8em;
+} */
+/* .itemsBasket{} */
+.alert {
+  /* color: red; */
+  display: inline-block;
+
+  font-family: Arial, 'Times New Roman';
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 100;
+  padding: 0 2px;
+  margin-left: 2em;
+}
+
+.total {
+  display: inline-block;
+
+  font-family: Arial, 'Times New Roman';
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 100;
+}
