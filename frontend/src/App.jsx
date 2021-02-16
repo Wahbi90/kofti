@@ -17,7 +17,7 @@ import firebase from './firebase/config';
 import Home from './components/home/home';
 import Cart from './components/cart/cart';
 import CardsList from './components/cardsList/cardsList';
-import { Layout } from 'antd';
+import { Layout, Menu } from 'antd';
 import {
   getUserById,
   setLoading,
@@ -30,8 +30,8 @@ import Checkout from './components/PathAndAuth/Pages/Checkout';
 import Payment from './components/PathAndAuth/Pages/Payment';
 import PaymentRoute from './components/PathAndAuth/auth/PaymentRoute';
 
-
 // const App = () => {
+
 
 const App = ({ getUser, user }) => {
   // const { Header, Content, Footer } = Layout;
@@ -40,6 +40,7 @@ const App = ({ getUser, user }) => {
   useEffect(() => {
     getUser();
   }, []);
+
   return (
     <BrowserRouter>
       <Loader shouldLoad={loading}>
@@ -47,10 +48,11 @@ const App = ({ getUser, user }) => {
         <Switch>
           <PublicRoute exact path="/">
             <Sidebar />
-            <Cart />
-              {/* <Areas /> */}
+            {/* <Cart /> */}
+            {/* <Cart /> */}
+            {/* <Areas /> */}
             <CardsList />
-          
+
             {/* <Home /> */}
           </PublicRoute>
           <AdminRoute path="/admin" component={Admin} />
@@ -62,8 +64,8 @@ const App = ({ getUser, user }) => {
           <PublicRoute path="/forgot-password" component={ForgotPassword} />
         </Switch>
       </Loader>
+      {/* <Menu/> */}
     </BrowserRouter>
-  
   );
 };
 

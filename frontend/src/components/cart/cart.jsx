@@ -9,13 +9,12 @@ class Basket extends Component {
   }
   render() {
     const { cartItems } = this.props;
-
     return (
       <div className="alert alert-info">
         {cartItems.length === 0 ? (
           'Basket is empty'
         ) : (
-          <div>
+          <div className="itemsBasket">
             You have {cartItems.length} items in the basket. <hr />
           </div>
         )}
@@ -30,19 +29,27 @@ class Basket extends Component {
                     className="btn btn-danger btn-xs"
                     onClick={(e) => {
                       this.props.removeFromCart(this.props.cartItems, item);
-                   
+
+                      console.log(item);
                     }}
                   >
                     X
                   </button>
                   <br />
                   {item.count} X {item.price}
-              
                 </li>
               ))}
             </ul>
 
-            <b>Total:{localStorage.getItem('sum')}</b>
+            <br></br>
+            <h2>
+              Total Quantity :
+              {cartItems.reduce(function (t, el, i) {
+                return (t += el.count);
+              }, 0)}
+            </h2>
+            <b className="total">Total:{localStorage.getItem('sum')}</b>
+            <br></br>
             <button onClick={this.checkout.bind(this)}>CheckOut</button>
           </div>
         )}
