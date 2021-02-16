@@ -27,10 +27,8 @@ const Headers: FC = () => {
   var items = JSON.parse(localStorage.getItem('cartItems'));
 
   const menu = (
-    <Menu
-    // onClick={handleMenuClick}
-    >
-      <Menu.Item key="1" icon={<UserOutlined />}>
+    <Menu>
+      <Menu.Item disabled={false} key="1" icon={<UserOutlined />}>
         <Basket />
       </Menu.Item>
     </Menu>
@@ -82,9 +80,11 @@ const Headers: FC = () => {
         )}
         {/* </Menu> */}
         <div>
-          {' '}
-          {console.log('danfous khra and wahbi approves', items)}
-          <Dropdown overlay={menu}>
+          <Dropdown
+            //  trigger={['click']}
+            overlay={menu}
+            //  visible={true}
+          >
             <button className="basketbasket">🛒</button>
           </Dropdown>
         </div>

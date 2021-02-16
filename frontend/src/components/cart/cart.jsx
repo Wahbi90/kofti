@@ -21,20 +21,22 @@ class Basket extends Component {
         {cartItems.length > 0 && (
           <div>
             <ul style={{ marginLeft: -25 }}>
-              {cartItems.map((item) => (
-                <li key={item.id}>
+              {cartItems.map((item, i) => (
+                <li key={i}>
                   <b>{item.title}</b>
                   <button
                     style={{ float: 'right' }}
                     className="btn btn-danger btn-xs"
                     onClick={(e) => {
                       this.props.removeFromCart(this.props.cartItems, item);
-
-                      console.log(item);
                     }}
                   >
-                    X
+                    ❌
                   </button>
+                  {/* <div className="plusAndMinus">
+                    <button> ➕</button>
+                    <button> ➖ </button>
+                  </div> */}
                   <br />
                   {item.count} X {item.price}
                 </li>
