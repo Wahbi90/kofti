@@ -15,7 +15,7 @@ const columns = [
 // rowSelection objects indicates the need for row selection
 const rowSelection = {
   onChange: (selectedRowKeys, selectedRows) => {
-    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    
   },
   onSelect: (record, selected, selectedRows) => {
     console.log(record, selected, selectedRows);

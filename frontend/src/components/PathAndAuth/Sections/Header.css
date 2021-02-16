@@ -10,3 +10,61 @@
   /* border: 1px solid #ff1100; */
   /* text-align: right; */
 }
+
+.basketbasket {
+  align-items: center;
+  background-color: none;
+  /* border-color: #dbdbdb; */
+  /* border-color: #dbdbdb; */
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  color: black;
+  display: inline-flex;
+  font-family: -apple-system;
+  gap: normal;
+  justify-content: center;
+  line-height: 17px;
+  padding-top: 15px;
+  text-align: center;
+  /* margin: 10px; */
+}
+.basketbasket:hover {
+  color: #3498bd;
+}
+.basketbasket::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: #3498bd;
+  /* z-index: -1; */
+  /* transition: 0.8s; */
+}
+
+/* .alert-info {
+  padding: 0 2px;
+  margin-left: 8em;
+} */
+/* .itemsBasket{} */
+.alert {
+  /* color: red; */
+  display: inline-block;
+
+  font-family: Arial, 'Times New Roman';
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 100;
+  padding: 0 2px;
+  margin-left: 2em;
+}
+
+.total {
+  display: inline-block;
+
+  font-family: Arial, 'Times New Roman';
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 100;
+}
