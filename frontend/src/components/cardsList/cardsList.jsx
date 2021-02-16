@@ -24,30 +24,30 @@ class CardsList extends Component {
       category: [],
       products: [],
       size: 'large',
+      sub: 0,
     };
   }
-  
+
   componentWillMount() {
-
-
     fetch('http://localhost:8081/product')
-
       .then((res) => res.json())
       .then((data) => {
-       
-        this.setState({ products: data })});
+        console.log(data);
+        this.setState({ products: data });
+      });
   }
-  // handleClick = (e) => {
-  
-  // };
+  handelchange = (e) => {
+    console.log('yuiiiiiiiiiiiiiiii', e);
+    this.setState({ sub: e });
+  };
 
   render() {
     const { category } = this.props;
-    
-    return (
-      <div className="container" >
 
-        <Row style={{marginLeft: 200,marginTop: 100}}
+    return (
+      <div className="container">
+        <Row
+          style={{ marginLeft: 200, marginTop: 100 }}
           // justify="space-between"
           // style={{
           //   alignItems: 'flex-end',
@@ -59,28 +59,32 @@ class CardsList extends Component {
           // }}
         >
           <Space size={[8, 16]} wrap>
+            <p>{this.state.count}</p>
             {this.state.products
               .filter((el) => !category || el.category === category)
               .map((post, i) => (
                 <Col key={i} span={4}>
                   <Space size={this.state.size}>
                     <Card
-                      style={{marginRight: 50,  width: 100, height: 100 ,  
-                      }}
+                      style={{ marginRight: 50, width: 100, height: 100 }}
                       cover={
                         <img
                           src={post.image}
-                          style={{ 
-                           width:200,
-                           height:100,
-                           alignContent: "center"
-
-                           }}
+                          style={{
+                            width: 200,
+                            height: 100,
+                            alignContent: 'center',
+                          }}
                         />
                       }
                       // height="200" width="200"
                       actions={[
-                        <InputNumber min={1} max={100000} defaultValue={1} />,
+                        <InputNumber
+                          min={1}
+                          max={100000}
+                          defaultValue={1}
+                          onChange={this.handelchange}
+                        />,
                         <Button
                           onClick={() => {
                             this.props.addToCart(this.props.cartItems, post);
@@ -90,9 +94,13 @@ class CardsList extends Component {
                         </Button>,
                       ]}
                     >
-                      <Meta style={{ fontSize : 10 , marginBottoms: -100}}
-                        title={<h6 style={{fontSize: 10, alignItems:'left'}}>{post.title}</h6>}
-                        
+                      <Meta
+                        style={{ fontSize: 10, marginBottoms: -100 }}
+                        title={
+                          <h6 style={{ fontSize: 10, alignItems: 'left' }}>
+                            {post.title}
+                          </h6>
+                        }
                         description={<h3>{post.price}</h3>}
                       />
                     </Card>
@@ -100,14 +108,11 @@ class CardsList extends Component {
                 </Col>
               ))}
           </Space>
-
         </Row>
-
         <Divider orientation="left"></Divider>
         <Pagination
           defaultCurrent={1}
           total={500}
-          
           style={{ paddingLeft: '500px' }}
         />
         <Divider orientation="left"></Divider>
