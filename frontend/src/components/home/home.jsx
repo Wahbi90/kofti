@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel } from 'antd';
+// import { Carousel } from 'antd';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {
   UserOutlined,
@@ -7,6 +7,7 @@ import {
   NotificationOutlined,
 } from '@ant-design/icons';
 import { Card, Avatar } from 'antd';
+// import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 import {
   EditOutlined,
   EllipsisOutlined,
@@ -14,6 +15,7 @@ import {
 } from '@ant-design/icons';
 import { Row, Col, Divider } from 'antd';
 import { Input, Space } from 'antd';
+import './home.css';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -46,25 +48,32 @@ function Home() {
               minHeight: 280,
             }}
           >
-            <Carousel afterChange={onChange}>
-              <div>
-                <h3 style={contentStyle}>1</h3>
+            <Carousel autoplay >
+        
+              <div >
+              <img  src="assets/orange.jpg"  ></img>
+              
               </div>
-              <div>  
-                <h3 style={contentStyle}>2</h3>
+
+             
+              <div >
+              <img    src="assets/watermelon.jpg"  ></img>
               </div>
-              <div>
-                <h3 style={contentStyle}>3</h3>
-              </div>
-              <div>
-                <h3 style={contentStyle}>4</h3>
-              </div>
+              <div >
+             
+             <img    src="assets/strawberry.jpg"  ></img>
+             </div>
+             <div >
+             
+             <img  src="assets/lemonflavw.jpg"  ></img>
+             </div>
+
             </Carousel>
             <Divider orientation="left">New Products</Divider>
             <Row justify="space-around">
               {
                 <Card
-                  style={{ width: 300 }}
+                  style={{ width: 150 }}
                   cover={
                     <img
                       alt="example"

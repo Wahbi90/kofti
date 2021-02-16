@@ -29,7 +29,7 @@ import CheckoutRoute from './components/PathAndAuth/auth/CheckoutRoute';
 import Checkout from './components/PathAndAuth/Pages/Checkout';
 import Payment from './components/PathAndAuth/Pages/Payment';
 import PaymentRoute from './components/PathAndAuth/auth/PaymentRoute';
-import Areas from './components/areas/areas.js'
+
 
 // const App = () => {
 

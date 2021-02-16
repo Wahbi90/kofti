@@ -58,7 +58,11 @@ function Sidebar({ changeCategory }) {
             </Menu.Item>
             {/* <Menu.Item key="6">option6</Menu.Item> */}
           </SubMenu>
-          <SubMenu key="3" icon={<ShopOutlined />} title="food"></SubMenu>
+          <SubMenu key="3" icon={<ShopOutlined />} title="food">
+          <Menu.Item key="6" onClick={() => changeCategory('food')}> 
+             All food
+            </Menu.Item>
+             </SubMenu>
         </Menu>
       </Sider>
     </Layout>

@@ -81,7 +81,7 @@ class CardsList extends Component {
                             this.props.addToCart(this.props.cartItems, post);
                           }}
                         >
-                          Add to cart
+                          ➕
                         </Button>,
                       ]}
                     >
