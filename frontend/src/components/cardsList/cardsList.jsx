@@ -26,22 +26,27 @@ class CardsList extends Component {
       size: 'large',
     };
   }
+  
   componentWillMount() {
+
+
     fetch('http://localhost:8081/product')
+
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+       
         this.setState({ products: data })});
   }
   // handleClick = (e) => {
-  //   console.log('hey');
+  
   // };
 
   render() {
     const { category } = this.props;
-    console.log('from cardlist', this.props);
+    
     return (
       <div className="container" >
+
         <Row style={{marginLeft: 200,marginTop: 100}}
           // justify="space-between"
           // style={{
@@ -95,6 +100,7 @@ class CardsList extends Component {
                 </Col>
               ))}
           </Space>
+
         </Row>
 
         <Divider orientation="left"></Divider>

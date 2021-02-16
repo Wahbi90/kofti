@@ -1,11 +1,26 @@
-import { Table, Switch, Radio, Form, Space, Modal, Button,Upload, Input, Divider, Cascader, InputNumber, Popconfirm, Typography} from 'antd';
+import {
+  Table,
+  Switch,
+  Radio,
+  Form,
+  Space,
+  Modal,
+  Button,
+  Upload,
+  Input,
+  Divider,
+  Cascader,
+  InputNumber,
+  Popconfirm,
+  Typography,
+} from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import React  from 'react';
+import React from 'react';
 import Draggable from 'react-draggable';
-import axios from 'axios';
+import Axios from 'axios';
 import { UploadOutlined } from '@ant-design/icons';
- 
-
+import { useState } from 'react';
+import axios from 'axios';
 
 const columns = [
   {
@@ -16,23 +31,22 @@ const columns = [
     title: 'categories',
     dataIndex: 'category',
     sorter: (a, b) => a.Quantity - b.Quantity,
-  },{
+  },
+  {
     title: 'Image',
     dataIndex: 'url',
-    render: tags => (
+    render: (tags) => (
       <Space>
-      <Upload
-      action="data"
-      listType="url"
-      defaultFileList={[url]}
-      className="upload-list-inline"
-    >
-      <Button icon={<UploadOutlined />}>Upload</Button>
-    </Upload>
-    </Space>
-
-    )
-
+        <Upload
+          action="data"
+          listType="url"
+          defaultFileList={[url]}
+          className="upload-list-inline"
+        >
+          <Button icon={<UploadOutlined />}>Upload</Button>
+        </Upload>
+      </Space>
+    ),
   },
   {
     title: 'Price',
@@ -56,98 +70,100 @@ const columns = [
     render: () => (
       <Space size="middle">
         <a>Delete</a>
-        <a className="ant-dropdown-link">
-          update 
-        </a>
+        <a className="ant-dropdown-link">update</a>
       </Space>
     ),
   },
 ];
 
-
-
-const expandable = { expandedRowRender: record => <p>{record.description}</p> };
-const url = () => this.state.data.map(element => {
-  return element.url
-}
-  )
+const expandable = {
+  expandedRowRender: (record) => <p>{record.description}</p>,
+};
+const url = () =>
+  this.state.data.map((element) => {
+    return element.url;
+  });
 const fileList = [
   {
     uid: '-1',
     name: 'title',
     status: 'done',
     url: 'url',
-    thumbUrl: 'url'  },  
+    thumbUrl: 'url',
+  },
 ];
 
-const title = () =>this.state.data.map(element => {
-    return element.title
-})
+const title = () =>
+  this.state.data.map((element) => {
+    return element.title;
+  });
 const showHeader = true;
 const pagination = { position: 'bottom' };
 const EditableCell = ({
-    editing,
-    dataIndex,
-    title,
-    inputType,
-    record,
-    index,
-    children,
-    ...restProps
-  }) => {
-    const inputNode = inputType === 'number' ? <InputNumber /> : <Input />;
-    return (
-      <td {...restProps}>
-        {editing ? (
-          <Form.Item
-            name={dataIndex}
-            style={{
-              margin: 0,
-            }}
-            rules={[
-              {
-                required: true,
-                message: `Please Input ${title}!`,
-              },
-            ]}
-          >
-            {inputNode}
-          </Form.Item>
-        ) : (
-          children
-        )}
-      </td>
-        );
-    };
+  editing,
+  dataIndex,
+  title,
+  inputType,
+  record,
+  index,
+  children,
+  ...restProps
+}) => {
+  const inputNode = inputType === 'number' ? <InputNumber /> : <Input />;
+  return (
+    <td {...restProps}>
+      {editing ? (
+        <Form.Item
+          name={dataIndex}
+          style={{
+            margin: 0,
+          }}
+          rules={[
+            {
+              required: true,
+              message: `Please Input ${title}!`,
+            },
+          ]}
+        >
+          {inputNode}
+        </Form.Item>
+      ) : (
+        children
+      )}
+    </td>
+  );
+};
 
 class Adminproducts extends React.Component {
-    constructor(props){
+  constructor(props) {
     super(props);
- this.state  = {
-    bordered: false,
-    loading: false,
-    pagination,
-    size: 'default',
-    expandable,
-    title: undefined,
-    showHeader,
-    rowSelection: {},
-    scroll: undefined,
-    hasData: true,
-    data : [],
-    tableLayout: undefined,
-    top: 'none',
-    bottom: 'bottomRight',
-    visible: false,
-    disabled: true,
-    bounds: { left: 0, top: 0, bottom: 0, right: 0 }
-  };
-}
- async componentWillMount () {
+    this.state = {
+      imageSelected: '',
+      bordered: false,
+      loading: false,
+      pagination,
+      size: 'default',
+      expandable,
+      title: undefined,
+      showHeader,
+      rowSelection: {},
+      scroll: undefined,
+      hasData: true,
+      data: [],
+      tableLayout: undefined,
+      top: 'none',
+      bottom: 'bottomRight',
+      visible: false,
+      disabled: true,
+      bounds: { left: 0, top: 0, bottom: 0, right: 0 },
+    };
+
+    this.selectImage = this.selectImage.bind(this);
+  }
+  async componentWillMount() {
     var res = await axios.get('https://fakestoreapi.com/products');
     console.log(res.data);
-    this.setState({data : res.data})
-   
+    this.setState({ data: res.data });
   }
   draggleRef = React.createRef();
   showModal = () => {
@@ -156,63 +172,64 @@ class Adminproducts extends React.Component {
     });
   };
 
-  handleOk = e => {
-    this.setState({
-      visible: false,
-    });
-  };
-
-  handleCancel = e => {
+  handleOk = (e) => {
     console.log(e);
     this.setState({
       visible: false,
     });
   };
-  handleToggle = prop => enable => {
+
+  handleCancel = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  };
+  handleToggle = (prop) => (enable) => {
     this.setState({ [prop]: enable });
   };
 
-  handleSizeChange = e => {
+  handleSizeChange = (e) => {
     this.setState({ size: e.target.value });
   };
 
-  handleTableLayoutChange = e => {
+  handleTableLayoutChange = (e) => {
     this.setState({ tableLayout: e.target.value });
   };
 
-  handleExpandChange = enable => {
+  handleExpandChange = (enable) => {
     this.setState({ expandable: enable ? expandable : undefined });
   };
 
-  handleEllipsisChange = enable => {
+  handleEllipsisChange = (enable) => {
     this.setState({ ellipsis: enable });
   };
 
-  handleTitleChange = enable => {
+  handleTitleChange = (enable) => {
     this.setState({ title: enable ? title : undefined });
   };
 
-  handleHeaderChange = enable => {
+  handleHeaderChange = (enable) => {
     this.setState({ showHeader: enable ? showHeader : false });
   };
 
-  handleFooterChange = enable => {
+  handleFooterChange = (enable) => {
     this.setState({ footer: enable ? footer : undefined });
   };
 
-  handleRowSelectionChange = enable => {
+  handleRowSelectionChange = (enable) => {
     this.setState({ rowSelection: enable ? {} : undefined });
   };
 
-  handleYScrollChange = enable => {
+  handleYScrollChange = (enable) => {
     this.setState({ yScroll: enable });
   };
 
-  handleXScrollChange = e => {
+  handleXScrollChange = (e) => {
     this.setState({ xScroll: e.target.value });
   };
 
-  handleDataChange = hasData => {
+  handleDataChange = (hasData) => {
     this.setState({ hasData });
   };
   onStart = (event, uiData) => {
@@ -228,6 +245,22 @@ class Adminproducts extends React.Component {
     });
   };
 
+  selectImage = (event) => {
+    let pic = event.target.files[0];
+    console.log(pic);
+    var formData = new FormData();
+    formData.append ('file', pic);
+    formData.append ('upload_preset', 'cloudyy');
+    Axios.post(
+      'https://api.cloudinary.com/v1_1/dgqiognni/image/upload',
+      formData,
+    )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => console.log(err));
+  };
+
   render() {
     const { category } = this.props;
     const { xScroll, yScroll, ...state } = this.state;
@@ -240,16 +273,17 @@ class Adminproducts extends React.Component {
       scroll.x = '100vw';
     }
 
-    const tableColumns = columns.map(item => ({ ...item, ellipsis: state.ellipsis }));
+    const tableColumns = columns.map((item) => ({
+      ...item,
+      ellipsis: state.ellipsis,
+    }));
     if (xScroll === 'fixed') {
       tableColumns[0].fixed = true;
       tableColumns[tableColumns.length - 1].fixed = 'right';
     }
-
     return (
-      
       <>
-          <Button onClick={this.showModal}>Add Product</Button>
+        <Button onClick={this.showModal}>Add Product</Button>
         <Modal
           title={
             <div
@@ -281,7 +315,7 @@ class Adminproducts extends React.Component {
           visible={visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
-          modalRender={modal => (
+          modalRender={(modal) => (
             <Draggable
               disabled={disabled}
               bounds={bounds}
@@ -291,10 +325,10 @@ class Adminproducts extends React.Component {
             </Draggable>
           )}
         >
-        <Divider orientation="left">Name</Divider>
+          <Divider orientation="left">Name</Divider>
           <Input placeholder="Product Name" />
           <br />
-       
+
           <Divider orientation="left">Price</Divider>
           <Input placeholder="Price" />
           <br />
@@ -302,23 +336,19 @@ class Adminproducts extends React.Component {
           <Input placeholder="Description" />
           <br />
           <Divider orientation="left">categorie</Divider>
-          <Cascader   placeholder="Please select categorie" />
+          <Cascader placeholder="Please select categorie" />
 
           <Divider orientation="left">pictures</Divider>
+          <input
+            type="file"
+            onChange={(e) => {
+              this.selectImage(e);
+            }}
+          />
 
-          <Space>
-      <Upload
-      action="data"
-      listType="url"
-      defaultFileList={[url]}
-      className="upload-list-inline"
-    >
-      <Button icon={<UploadOutlined />}>Upload</Button>
-    </Upload>
-    </Space>
-
+          {/* <button onClick={this.selectImage}>Upload Image</button> */}
         </Modal>
-      <h6 style={{fontSize:'30px'}}>products :</h6>
+        <h6 style={{ fontSize: '30px' }}>products :</h6>
         <Table
           {...this.state}
           pagination={{ position: [this.state.top, this.state.bottom] }}
@@ -328,7 +358,7 @@ class Adminproducts extends React.Component {
           scroll={scroll}
         />
       </>
-       );
-    }
+    );
   }
-  export default Adminproducts;
+}
+export default Adminproducts;

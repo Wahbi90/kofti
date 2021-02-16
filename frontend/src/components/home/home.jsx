@@ -20,10 +20,10 @@ import './home.css';
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 const { Meta } = Card;
-const onSearch = (value) => console.log(value);
+const onSearch = (value) => {}
 
 function onChange(a, b, c) {
-  console.log(a, b, c);
+ 
 }
 
 const contentStyle = {
