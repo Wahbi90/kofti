@@ -43,7 +43,7 @@ class CardsList extends Component {
 
   render() {
     const { category } = this.props;
-    console.log('from cardlist', this.props);
+
     return (
       <div className="container">
         <Row
