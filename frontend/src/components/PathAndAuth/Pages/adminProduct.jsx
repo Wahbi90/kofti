@@ -161,7 +161,7 @@ class Adminproducts extends React.Component {
     this.selectImage = this.selectImage.bind(this);
   }
   async componentWillMount() {
-    var res = await axios.get('https://fakestoreapi.com/products');
+    var res = await axios.get('http://localhost:8081/product');
     console.log(res.data);
     this.setState({ data: res.data });
   }
@@ -332,9 +332,9 @@ class Adminproducts extends React.Component {
           <Divider orientation="left">Price</Divider>
           <Input placeholder="Price" />
           <br />
-          <Divider orientation="left">Description</Divider>
+          {/* <Divider orientation="left">Description</Divider>
           <Input placeholder="Description" />
-          <br />
+          <br /> */}
           <Divider orientation="left">categorie</Divider>
           <Cascader placeholder="Please select categorie" />
 

@@ -18,5 +18,5 @@ export class AppController {
       console.log("sent")
       return 'ayhajaa'
     }
-  
+}
 

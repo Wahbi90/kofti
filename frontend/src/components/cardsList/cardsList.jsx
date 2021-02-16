@@ -37,12 +37,14 @@ class CardsList extends Component {
        
         this.setState({ products: data })});
   }
-  // handleClick = (e) => {
   
-  // };
-
   render() {
     const { category } = this.props;
+    
+  function onShowSizeChange(current, pageSize) {
+     
+    }
+  
     
     return (
       <div className="container" >
@@ -61,7 +63,7 @@ class CardsList extends Component {
           <Space size={[8, 16]} wrap>
             {this.state.products
               .filter((el) => !category || el.category === category)
-              .map((post, i) => (
+             .map((post, i) => (
                 <Col key={i} span={4}>
                   <Space size={this.state.size}>
                     <Card
@@ -77,6 +79,7 @@ class CardsList extends Component {
 
                            }}
                         />
+                          
                       }
                       // height="200" width="200"
                       actions={[
@@ -104,12 +107,12 @@ class CardsList extends Component {
         </Row>
 
         <Divider orientation="left"></Divider>
-        <Pagination
-          defaultCurrent={1}
-          total={500}
-          
-          style={{ paddingLeft: '500px' }}
-        />
+         <Pagination
+      showSizeChanger
+      onShowSizeChange={onShowSizeChange}
+      defaultCurrent={3}
+      total={500}
+    />
         <Divider orientation="left"></Divider>
         <Footer style={{ textAlign: 'center' }}>
           Freshky ©2021 Created by R.M.A.M.S

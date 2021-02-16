@@ -8,7 +8,7 @@ const Loader: FC<{ shouldLoad: boolean; children: any }> = ({
 }) => {
   return shouldLoad ? (
     <div className="loader-wrapper">
-      <div className="custom-loader">hi</div>
+      <div className="custom-loader">  loader 3asba  </div>
     </div>
   ) : (
     children
