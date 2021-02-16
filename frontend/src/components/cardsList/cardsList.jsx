@@ -26,6 +26,8 @@ class CardsList extends Component {
         this.setState({ products: data })});
   }
 
+  
+
   render() {
     const { category } = this.props;
     console.log('from cardlist', this.props);
