@@ -27,10 +27,8 @@ const Headers: FC = () => {
   var items = JSON.parse(localStorage.getItem('cartItems'));
 
   const menu = (
-    <Menu
-    // onClick={handleMenuClick}
-    >
-      <Menu.Item key="1" icon={<UserOutlined />}>
+    <Menu>
+      <Menu.Item disabled={false} key="1" icon={<UserOutlined />}>
         <Basket />
       </Menu.Item>
     </Menu>

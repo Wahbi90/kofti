@@ -14,6 +14,7 @@ class Basket extends Component {
   }
   render() {
     const { cartItems } = this.props;
+    console.log(cartItems);
     return (
       <div className="alert alert-info">
         {cartItems.length === 0 ? (
@@ -26,24 +27,24 @@ class Basket extends Component {
         {cartItems.length > 0 && (
           <div>
             <ul style={{ marginLeft: -25 }}>
-              {cartItems.map((item) => (
-                <li key={item.id}>
-                  <b>{item.title}</b>
-                  <button
-                    style={{ float: 'right' }}
-                    className="btn btn-danger btn-xs"
-                    onClick={(e) => {
-                      this.props.removeFromCart(this.props.cartItems, item);
-
-                      console.log(item);
-                    }}
-                  >
-                    X
-                  </button>
-                  <br />
-                  {item.count} X {item.price}
-                </li>
-              ))}
+              {cartItems.map((item, i) => {
+                return (
+                  <li key={i}>
+                    <b>{item.title}</b>
+                    <button
+                      style={{ float: 'right' }}
+                      className="btn btn-danger btn-xs"
+                      onClick={(e) => {
+                        this.props.removeFromCart(this.props.cartItems, item);
+                      }}
+                    >
+                      ❌
+                    </button>
+                    <br />
+                    {item.count} X {item.price}
+                  </li>
+                );
+              })}
             </ul>
 
             <br></br>

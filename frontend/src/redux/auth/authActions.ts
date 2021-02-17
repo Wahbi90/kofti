@@ -14,6 +14,7 @@ import {
 
 import firebase from '../../firebase/config';
 import { RootState } from '../../store';
+import Axios from 'axios';
 
 // create user
 
@@ -33,12 +34,14 @@ export const signup = (
           id: res.user.uid,
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           types: false,
+          rewards: 0,
         };
         await firebase
           .firestore()
           .collection('/users')
           .doc(res.user.uid)
           .set(userData);
+        console.log(userData);
         await res.user.sendEmailVerification();
         dispatch({
           type: NEED_VERIFICATION,
@@ -47,6 +50,14 @@ export const signup = (
           type: SET_USER,
           payload: userData,
         });
+        delete userData.createdAt;
+        Axios.post('http://localhost:8081/User', userData)
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     } catch (err) {
       console.log(err);
