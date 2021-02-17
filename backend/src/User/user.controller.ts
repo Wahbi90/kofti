@@ -10,7 +10,6 @@ export class UserController {
       @Body('firstName') userfirstName: string,
       @Body('email') useremail: string,
       @Body('id') userid:String,
-      @Body('createdAt') usercreatedAt:string,
       @Body('types') usertypes: boolean,
       @Body('rewards') userrewards:number,
     ) {
@@ -19,9 +18,8 @@ export class UserController {
         userfirstName ,
             useremail,
             userid ,
-            usercreatedAt ,
             usertypes ,
-            userrewards,
+            userrewards
       );
       return { id: generatedId };
     }

@@ -12,12 +12,11 @@ export class UserService {
         @InjectModel('User') private readonly userModel: Model<User>,
       ) {}
     
-      async insertUser(  firstName : String,email : String, id : String,createdAt : String,types : Boolean, rewards:Number) {
+      async insertUser(  firstName : String,email : String, id : String,types : Boolean, rewards:Number) {
         const newUser = new this.userModel({
             firstName ,
             email,
             id ,
-            createdAt ,
             types ,
             rewards
         });
@@ -32,7 +31,6 @@ export class UserService {
             firstName :user.firstName ,
             email :user.email,
             id :user.id ,
-            createdAt :user.createdAt ,
             types : user.types ,
             rewards : user.rewards
           }));
@@ -44,7 +42,6 @@ export class UserService {
             firstName :user.firstName ,
             email :user.email,
             id :user.id ,
-            createdAt :user.createdAt ,
             types : user.types,
             rewards : user.rewards
           };
