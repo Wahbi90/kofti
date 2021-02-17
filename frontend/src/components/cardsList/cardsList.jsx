@@ -24,7 +24,7 @@ class CardsList extends Component {
       category: [],
       products: [],
       size: 'large',
-      sub: 0,
+      sub: 1,
     };
   }
 
@@ -87,7 +87,12 @@ class CardsList extends Component {
                         />,
                         <Button
                           onClick={() => {
-                            this.props.addToCart(this.props.cartItems, post);
+                            this.props.addToCart(
+                              this.props.cartItems,
+                              post,
+                              this.state.sub,
+                            );
+                            this.state.sub = 1;
                           }}
                         >
                           Add to cart

@@ -6,18 +6,14 @@ import { AppService } from './app.service';
 @Controller()
 export class AppController {
 
-   @Get ()
-   get(): any {
-  
-
-    return "hello";
-   }
-  @Post() 
-  
-    test():string {
-      console.log("sent")
-      return 'ayhajaa'
-    }
+  @Get()
+  get(): any {
+    return 'hello';
   }
-  
+  @Post()
+  test(): string {
+    console.log('sent');
+    return 'ayhajaa';
+  }
+}
 
