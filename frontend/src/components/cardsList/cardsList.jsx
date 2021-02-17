@@ -24,7 +24,7 @@ class CardsList extends Component {
       category: [],
       products: [],
       size: 'large',
-      sub: 0,
+      sub: 1,
     };
   }
 

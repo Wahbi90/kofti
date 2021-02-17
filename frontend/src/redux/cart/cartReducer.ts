@@ -1,7 +1,7 @@
 import { ADD_TO_CART, REMOVE_FROM_CART } from './cartTypes';
 const arr = localStorage.getItem('cartItems');
-
 const products = JSON.parse(arr) || [];
+console.log({ products });
 const initialState = {
   items: products,
 };
