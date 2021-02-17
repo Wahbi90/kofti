@@ -18,6 +18,7 @@ import { CreateProductDTO } from './dtos/product.dto';
 @Controller('product')
 export class ProductController {
   constructor(private productService: ProductService) {}
+
   @Get('categories')
   async getAllCat() {
     const products = await this.productService.getProducts();
@@ -29,6 +30,7 @@ export class ProductController {
     });
     return categories;
   }
+
 
   @Post()
   async addProduct(
@@ -46,11 +48,13 @@ export class ProductController {
     return { id: generatedId };
   }
 
+
   @Get()
   async getAllProducts() {
     const products = await this.productService.getProducts();
     return products.reverse();
   }
+
 
   @Get(':id')
   getProduct(@Param('id') prodId: string) {
@@ -74,11 +78,25 @@ export class ProductController {
     );
     return null;
   }
-
   @Delete(':id')
   async removeProduct(@Param('id') prodId: string) {
-    await this.productService.deleteProduct(prodId);
-    return null;
+      await this.productService.deleteProduct(prodId);
+      return null;
   }
 
 }
+  // @Post('/create')
+  // async addProduct(@Res() res, @Body() createProductDTO: CreateProductDTO) {
+  //  const product = await this.productService.addProduct(createProductDTO);
+  //     return res.status(HttpStatus.OK).json({
+  //      message: "Product has been created successfully",
+  //         product
+  //     })
+  //  }
+
+  // @Get('product')
+  // async getAllProduct(@Res() res) {
+  //     const products = await this.productService.getAllProducts();
+  //     return res.status(HttpStatus.OK).json(products);
+  // }
+
