@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { addToCart, removeFromCart } from '../../redux/cart/cartActions';
 import { Redirect, Router, withRouter } from 'react-router-dom';
 
+
+
+
+
+
 class Basket extends Component {
   checkout() {
     this.props.history.push('/checkout');
@@ -52,6 +57,7 @@ class Basket extends Component {
             <b className="total">Total:{localStorage.getItem('sum')}</b>
             <br></br>
             <button onClick={this.checkout.bind(this)}>CheckOut</button>
+  
           </div>
         )}
       </div>

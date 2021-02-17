@@ -5,6 +5,7 @@ import  {Select} from 'antd';
 import { Input, Space } from 'antd';
 import Adminproducts from './adminProduct';
 import Admincategories from  './adminCategories';
+import AdminOrders from './adminOrders'
 
 
 
@@ -35,7 +36,7 @@ function callback(key) {
 const { TabPane } = Tabs;
     return (
         <>
-            <Layout>
+            <Layout style={{zIndex:2}}>
             
             <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
             <Tabs defaultActiveKey="1" onChange={callback}>
@@ -45,8 +46,8 @@ const { TabPane } = Tabs;
     <TabPane tab="Update categories" key="2">
         <Admincategories/>
     </TabPane>
-    <TabPane tab="Update promos" key="3">
-      Content of Tab Pane 3
+    <TabPane tab="Orders " key="3">
+    <AdminOrders/>
     </TabPane>
   </Tabs>
             </Content>

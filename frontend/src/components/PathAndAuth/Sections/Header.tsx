@@ -11,7 +11,7 @@ import { RootState } from '../../../store';
 import Basket from '../../cart/cart';
 
 import { Dropdown, message, Space, Tooltip } from 'antd';
-import { DownOutlined, UserOutlined } from '@ant-design/icons';
+import { ShoppingCartOutlined, DownOutlined, UserOutlined } from '@ant-design/icons';
 
 const Headers: FC = () => {
   const history = useHistory();
@@ -40,7 +40,7 @@ const Headers: FC = () => {
         style={{
           background: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
           position: 'fixed',
-          zIndex: 1,
+          zIndex: 2,
           width: '100%',
           display: 'flex',
           justifyContent: 'flex-end',
@@ -80,12 +80,11 @@ const Headers: FC = () => {
         )}
         {/* </Menu> */}
         <div>
-          <Dropdown
-            //  trigger={['click']}
-            overlay={menu}
-            //  visible={true}
-          >
-            <button className="basketbasket">🛒</button>
+          {' '}
+          {console.log('danfous khra and wahbi approves', items)}
+          <Dropdown overlay={menu} trigger={['click']}>
+          <ShoppingCartOutlined className='basketbasket' style={{  margin: '14.9px 0px 0px 8px' , padding: '8px 6px 10px', fontSize: '19px'}}/>
+            {/* <button className='basketbasket'  style={{  margin: '15px 0px 0px 8px' , padding: '14px 6px 10px'}}> </button> */}
           </Dropdown>
         </div>
       </Header>

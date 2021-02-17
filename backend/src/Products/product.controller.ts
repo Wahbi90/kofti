@@ -25,8 +25,8 @@ export class ProductController {
   
     @Get()
     async getAllProducts() {
-      const products = await this.productService.getProducts();
-      return products;
+      const products = await this.productService.getProducts(); 
+      return products.reverse();;
     }
   
 
@@ -57,22 +57,5 @@ export class ProductController {
         await this.productService.deleteProduct(prodId);
         return null;
     }
-
-
-    // @Post('/create')
-    // async addProduct(@Res() res, @Body() createProductDTO: CreateProductDTO) {
-    //  const product = await this.productService.addProduct(createProductDTO);
-    //     return res.status(HttpStatus.OK).json({
-    //      message: "Product has been created successfully",
-    //         product
-    //     })
-    //  }
-
-    
-    // @Get('product')
-    // async getAllProduct(@Res() res) {
-    //     const products = await this.productService.getAllProducts();
-    //     return res.status(HttpStatus.OK).json(products);
-    // }
 
 }
