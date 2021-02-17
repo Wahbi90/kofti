@@ -10,7 +10,8 @@ export interface User {
     email : string;
     id : string;
     createdAt : any;
-    types : boolean
+    types : boolean;
+    rewards: number;
 }
 
 export interface AuthState {

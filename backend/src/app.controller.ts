@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
+
   @Get()
   get(): any {
     return 'hello';
@@ -15,3 +16,4 @@ export class AppController {
     return 'ayhajaa';
   }
 }
+
