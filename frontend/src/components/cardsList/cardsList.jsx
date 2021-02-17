@@ -92,6 +92,7 @@ class CardsList extends Component {
                               post,
                               this.state.sub,
                             );
+                            this.state.sub = 1;
                           }}
                         >
                           Add to cart
