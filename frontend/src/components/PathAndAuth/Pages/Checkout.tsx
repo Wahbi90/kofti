@@ -89,7 +89,7 @@ let productName = JSON.parse(localStorage.getItem('cartItems')).map(el=>{return 
           <div>
             <StripeCheckout
               stripeKey="pk_test_51IJxTPHsdDLmCbLGE7cwb9KmoftRqAojzRTWQZLJ6NXfzDUjZqhCABV0mc3HjaaYf3rkmxe91qOLtegyUaeW8KwI00DbaQqC96"
-              token={(token: Token, adress:any) => {
+              token={(token, adress) => {
                 console.log('function work', token, adress);
               }}
               billingAddress
