@@ -35,11 +35,12 @@ export class ProductController {
     return { id: generatedId };
   }
 
-  @Get()
-  async getAllProducts() {
-    const products = await this.productService.getProducts();
-    return products;
-  }
+    @Get()
+    async getAllProducts() {
+      const products = await this.productService.getProducts(); 
+      return products.reverse();;
+    }
+  
 
   @Get(':id')
   getProduct(@Param('id') prodId: string) {
@@ -63,12 +64,13 @@ export class ProductController {
     );
     return null;
   }
-
   @Delete(':id')
   async removeProduct(@Param('id') prodId: string) {
-    await this.productService.deleteProduct(prodId);
-    return null;
+      await this.productService.deleteProduct(prodId);
+      return null;
   }
+
+}
 
   // @Post('/create')
   // async addProduct(@Res() res, @Body() createProductDTO: CreateProductDTO) {
@@ -84,4 +86,6 @@ export class ProductController {
   //     const products = await this.productService.getAllProducts();
   //     return res.status(HttpStatus.OK).json(products);
   // }
-}
+
+
+  

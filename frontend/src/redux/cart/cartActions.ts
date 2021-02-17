@@ -1,6 +1,6 @@
 import { ADD_TO_CART, REMOVE_FROM_CART } from './cartTypes';
 
-export const addToCart = (items, product) => (dispatch) => {
+export const addToCart = (items, product, quantity) => (dispatch) => {
   var sum = 0;
   const arr = localStorage.getItem('cartItems');
   const products = JSON.parse(arr);
@@ -9,15 +9,14 @@ export const addToCart = (items, product) => (dispatch) => {
 
   cartItems.map((cp) => {
     if (cp.title === product.title) {
-      cp.count += 1;
+      cp.count += quantity;
       productAlreadyInCart = true;
       console.log(cartItems);
     }
   });
 
   if (!productAlreadyInCart) {
-    console.log('nope', productAlreadyInCart);
-    cartItems.push({ ...product, count: 1 });
+    cartItems.push({ ...product, count: quantity });
   }
 
   localStorage.setItem('cartItems', JSON.stringify(cartItems));

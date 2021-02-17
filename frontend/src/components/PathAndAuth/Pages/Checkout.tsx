@@ -15,6 +15,9 @@ const Checkout = () => {
 
   //   const submitHandler = (e: FormEvent) => {
   //     e.preventDefault();
+   
+let productName = JSON.parse(localStorage.getItem('cartItems')).map(el=>{return el.title})
+
 
   return (
     <div className="container">
@@ -81,7 +84,7 @@ const Checkout = () => {
           </fieldset>
           <br />
           <button className="is-primary is-fullwidth mt-5" type="button">
-            Submit
+            Pay at delivery
           </button>
           <div>
             <StripeCheckout
@@ -91,8 +94,9 @@ const Checkout = () => {
               }}
               billingAddress
               shippingAddress
-              amount={+localStorage.getItem('sum')}
-              name={localStorage.getItem('cartItems')}
+              amount={+localStorage.getItem('sum')*100}
+              name={productName}
+              currency='TND'
             />
           </div>
         </form>
@@ -100,5 +104,6 @@ const Checkout = () => {
     </div>
   );
 };
+
 
 export default Checkout;

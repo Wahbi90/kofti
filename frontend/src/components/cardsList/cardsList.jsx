@@ -13,10 +13,10 @@ import {
 import { connect } from 'react-redux';
 import './cardsList.css';
 import { addToCart, removeFromCart } from '../../redux/cart/cartActions';
+import axios from 'axios'
 
-const { Meta } = Card;
 const { Footer } = Layout;
-
+const { Meta } = Card;
 class CardsList extends Component {
   constructor(props) {
     super(props);
@@ -24,17 +24,13 @@ class CardsList extends Component {
       category: [],
       products: [],
       size: 'large',
-      sub: 0,
+      sub: 1,
     };
   }
 
   componentWillMount() {
-    fetch('http://localhost:8081/product')
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        this.setState({ products: data });
-      });
+ 
+    axios.get('http://localhost:8081/product').then((response)=>{ this.setState({products:response.data})})
   }
   handelchange = (e) => {
     console.log('yuiiiiiiiiiiiiiiii', e);
@@ -45,9 +41,12 @@ class CardsList extends Component {
 
   render() {
     const { category } = this.props;
-
+    
+    function onShowSizeChange(current, pageSize) {
+       
+      }
     return (
-      <div className="container">
+      <div className="container" style={{zIndex: '1'}}>
         <Row
           style={{ marginLeft: 200, marginTop: 100 }}
           // justify="space-between"
@@ -64,20 +63,47 @@ class CardsList extends Component {
             <p>{this.state.count}</p>
             {this.state.products
               .filter((el) => !category || el.category === category)
-              .map((post, i) => (
-                <Col key={i} span={4}>
+             .map((post, i) => (
+                <Col style={{ paddingLeft: '40px'}}key={i} span={4}>
                   <Space size={this.state.size}>
-                    <Card
-                      style={{ marginRight: 50, width: 100, height: 100 }}
+                  <Card
+                  hoverable
+                  style={{ width: 170 }}
+                    cover={<img alt="example" src={post.image} />}
+                    >
+                      
+                    <Meta title={post.title} description={post.price}  />
+                   {[
+                        <InputNumber
+                          min={1}
+                          max={100000}
+                          defaultValue={1}
+                          onChange={this.handelchange}
+                        />,
+                        <Button
+                          onClick={() => {
+                            this.props.addToCart(this.props.cartItems, post,          this.state.sub,
+                              );
+                              this.state.sub = 1;
+                            }}
+                        >
+                          ➕
+                        </Button>,
+                      ]}
+                  </Card>
+                    {/* <Card
+                    hoverable
+                      style={{ width: 240 , marginRight: 50, width: 100, height: 100 , background: 'white' }}
                       cover={
                         <img
                           src={post.image}
                           style={{
-                            width: 200,
-                            height: 100,
+                            // width: 200,
+                            // height: 100,
                             alignContent: 'center',
                           }}
                         />
+                          
                       }
                       // height="200" width="200"
                       actions={[
@@ -89,10 +115,15 @@ class CardsList extends Component {
                         />,
                         <Button
                           onClick={() => {
-                            this.props.addToCart(this.props.cartItems, post);
+                            this.props.addToCart(
+                              this.props.cartItems,
+                              post,
+                              this.state.sub,
+                            );
+                            this.state.sub = 1;
                           }}
                         >
-                          Add to cart
+                          ➕
                         </Button>,
                       ]}
                     >
@@ -105,18 +136,21 @@ class CardsList extends Component {
                         }
                         description={<h3>{post.price}</h3>}
                       />
-                    </Card>
+                    </Card> */}
                   </Space>
                 </Col>
               ))}
           </Space>
         </Row>
         <Divider orientation="left"></Divider>
-        <Pagination
-          defaultCurrent={1}
-          total={500}
-          style={{ paddingLeft: '500px' }}
-        />
+         <Pagination
+      showSizeChanger
+      onShowSizeChange={onShowSizeChange}
+      defaultCurrent={1}
+      total={35}
+      style={{display: 'flex' ,
+        justifyContent: 'center'}}
+    />
         <Divider orientation="left"></Divider>
         <Footer style={{ textAlign: 'center' }}>
           Freshky ©2021 Created by R.M.A.M.S
