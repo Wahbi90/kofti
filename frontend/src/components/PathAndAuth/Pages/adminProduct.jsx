@@ -17,7 +17,7 @@ import {
 import { DownOutlined } from '@ant-design/icons';
 import React from 'react';
 import Draggable from 'react-draggable';
-import Axios from 'axios';
+
 import { UploadOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import axios from 'axios';
@@ -69,9 +69,12 @@ const columns = [
     sorter: true,
     render: () => (
       <Space size="middle">
-        <a>Delete</a>
-        <a className="ant-dropdown-link">update</a>
+         <Button danger>Delete</Button>
+        <Button type="link" >
+        update
+    </Button>
       </Space>
+      
     ),
   },
 ];
@@ -156,6 +159,12 @@ class Adminproducts extends React.Component {
       visible: false,
       disabled: true,
       bounds: { left: 0, top: 0, bottom: 0, right: 0 },
+      title1: '',
+      price: 0,
+      category:"",
+      image:'',
+      categories:[],
+      arrexamples:[]
     };
 
     this.selectImage = this.selectImage.bind(this);
@@ -164,6 +173,29 @@ class Adminproducts extends React.Component {
     var res = await axios.get('http://localhost:8081/product');
     console.log(res.data);
     this.setState({ data: res.data });
+    const arrCategory = []
+   const categ = () => {
+     for (let i = 0; i < res.data.length; i++) {
+       if (! arrCategory.includes(res.data[i].category) ){
+         arrCategory.push( res.data[i].category)
+        }
+      } 
+      this.setState({arrexamples:arrCategory })
+      var arr = arrCategory.map(el=> {
+        var obj= {}
+        obj["value"]=el
+        obj["label"]=el
+        console.log(obj)
+        return obj
+       })
+       this.setState({categories:arr})
+       console.log("sleh",this.state.categories)
+      
+    }
+    categ()
+
+ 
+
   }
   draggleRef = React.createRef();
   showModal = () => {
@@ -177,6 +209,9 @@ class Adminproducts extends React.Component {
     this.setState({
       visible: false,
     });
+    axios.post('http://localhost:8081/product',{title:this.state.title1,price:this.state.price,category:this.state.category,image:this.state.image }).then((response)=>{
+      console.log(response)
+    }).catch((err)=>{console.log(err,"error from post ")})
   };
 
   handleCancel = (e) => {
@@ -251,18 +286,45 @@ class Adminproducts extends React.Component {
     var formData = new FormData();
     formData.append ('file', pic);
     formData.append ('upload_preset', 'cloudyy');
-    Axios.post(
+    axios.post(
       'https://api.cloudinary.com/v1_1/dgqiognni/image/upload',
       formData,
     )
       .then((response) => {
-        console.log(response);
+        console.log(response.data.url);
+        this.setState({image: response.data.url})
       })
       .catch((err) => console.log(err));
   };
 
+
+  
+
+
+  selectName = (event) => {
+    
+    this.setState({title1: event.target.value })
+    console.log('fr',this.state.title1)
+  }
+
+  selectPrice= (event) => {
+    this.setState({price: event.target.value })
+    console.log('fraj',this.state.price)
+  }
+  onChange1(value) {
+    if(Array.isArray(value)){
+    const res=value[0]
+     this.setState({category: res })}
+     else{
+      console.log(value.target.value,'fdsfds')
+      const res=value.target.value
+       this.setState({category: res })
+    }
+  }
+
+
   render() {
-    const { category } = this.props;
+    // const { category } = this.props;
     const { xScroll, yScroll, ...state } = this.state;
     const { bounds, disabled, visible } = this.state;
     const scroll = {};
@@ -325,18 +387,32 @@ class Adminproducts extends React.Component {
             </Draggable>
           )}
         >
+        
           <Divider orientation="left">Name</Divider>
-          <Input placeholder="Product Name" />
+          <Input placeholder="Product Name"  onChange={
+                      this.selectName.bind(this)} />
           <br />
 
           <Divider orientation="left">Price</Divider>
-          <Input placeholder="Price" />
+          <Input placeholder="Price" 
+                    onChange={
+                      this.selectPrice} 
+          />
           <br />
           {/* <Divider orientation="left">Description</Divider>
           <Input placeholder="Description" />
           <br /> */}
-          <Divider orientation="left">categorie</Divider>
-          <Cascader placeholder="Please select categorie" />
+          <Divider orientation="left">Category</Divider>
+          <Cascader placeholder="Please select category" 
+          // defaultValue={this.state.arrexamples}
+          options={this.state.categories}
+         onChange={this.onChange1.bind(this)}/>
+         <br />
+         <br />
+         <Input placeholder="new category"
+         onChange={ this.onChange1.bind(this) 
+         }
+          />
 
           <Divider orientation="left">pictures</Divider>
           <input
@@ -345,8 +421,7 @@ class Adminproducts extends React.Component {
               this.selectImage(e);
             }}
           />
-
-          {/* <button onClick={this.selectImage}>Upload Image</button> */}
+ {/* <button onClick={this.selectImage}>Upload Image</button> */}
         </Modal>
         <h6 style={{ fontSize: '30px' }}>products :</h6>
         <Table

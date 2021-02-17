@@ -84,7 +84,7 @@ let productName = JSON.parse(localStorage.getItem('cartItems')).map(el=>{return 
           </fieldset>
           <br />
           <button className="is-primary is-fullwidth mt-5" type="button">
-            Submit
+            Pay at delivery
           </button>
           <div>
             <StripeCheckout

@@ -36,7 +36,7 @@ function callback(key) {
 const { TabPane } = Tabs;
     return (
         <>
-            <Layout>
+            <Layout style={{zIndex:2}}>
             
             <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
             <Tabs defaultActiveKey="1" onChange={callback}>

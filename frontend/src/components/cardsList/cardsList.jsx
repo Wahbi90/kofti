@@ -13,10 +13,10 @@ import {
 import { connect } from 'react-redux';
 import './cardsList.css';
 import { addToCart, removeFromCart } from '../../redux/cart/cartActions';
+import axios from 'axios'
 
-const { Meta } = Card;
 const { Footer } = Layout;
-
+const { Meta } = Card;
 class CardsList extends Component {
   constructor(props) {
     super(props);
@@ -25,16 +25,13 @@ class CardsList extends Component {
       products: [],
       size: 'large',
       sub: 0,
+
     };
   }
 
   componentWillMount() {
-    fetch('http://localhost:8081/product')
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        this.setState({ products: data });
-      });
+ 
+    axios.get('http://localhost:8081/product').then((response)=>{ this.setState({products:response.data})})
   }
   handelchange = (e) => {
     console.log('yuiiiiiiiiiiiiiiii', e);
@@ -48,7 +45,7 @@ class CardsList extends Component {
        
       }
     return (
-      <div className="container">
+      <div className="container" style={{zIndex: '1'}}>
         <Row
           style={{ marginLeft: 200, marginTop: 100 }}
           // justify="space-between"
@@ -66,16 +63,40 @@ class CardsList extends Component {
             {this.state.products
               .filter((el) => !category || el.category === category)
              .map((post, i) => (
-                <Col key={i} span={4}>
+                <Col style={{ paddingLeft: '40px'}}key={i} span={4}>
                   <Space size={this.state.size}>
-                    <Card
-                      style={{ marginRight: 50, width: 100, height: 100 }}
+                  <Card
+                  hoverable
+                  style={{ width: 170 }}
+                    cover={<img alt="example" src={post.image} />}
+                    >
+                      
+                    <Meta title={post.title} description={post.price}  />
+                   {[
+                        <InputNumber
+                          min={1}
+                          max={100000}
+                          defaultValue={1}
+                          onChange={this.handelchange}
+                        />,
+                        <Button
+                          onClick={() => {
+                            this.props.addToCart(this.props.cartItems, post);
+                          }}
+                        >
+                          ➕
+                        </Button>,
+                      ]}
+                  </Card>
+                    {/* <Card
+                    hoverable
+                      style={{ width: 240 , marginRight: 50, width: 100, height: 100 , background: 'white' }}
                       cover={
                         <img
                           src={post.image}
                           style={{
-                            width: 200,
-                            height: 100,
+                            // width: 200,
+                            // height: 100,
                             alignContent: 'center',
                           }}
                         />
@@ -107,7 +128,7 @@ class CardsList extends Component {
                         }
                         description={<h3>{post.price}</h3>}
                       />
-                    </Card>
+                    </Card> */}
                   </Space>
                 </Col>
               ))}
@@ -117,8 +138,10 @@ class CardsList extends Component {
          <Pagination
       showSizeChanger
       onShowSizeChange={onShowSizeChange}
-      defaultCurrent={3}
-      total={500}
+      defaultCurrent={1}
+      total={35}
+      style={{display: 'flex' ,
+        justifyContent: 'center'}}
     />
         <Divider orientation="left"></Divider>
         <Footer style={{ textAlign: 'center' }}>

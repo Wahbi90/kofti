@@ -6,7 +6,7 @@ import {
   LaptopOutlined,
   NotificationOutlined,
 } from '@ant-design/icons';
-import { Card, Avatar } from 'antd';
+import { Card, Avatar, Carousel  } from 'antd';
 // import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 import {
   EditOutlined,
@@ -48,28 +48,21 @@ function Home() {
               minHeight: 280,
             }}
           >
-            <Carousel autoplay >
-        
+            <Carousel autoplay style={{ width: '900px', height: '600px'}}>
               <div >
-              <img  src="assets/orange.jpg"  ></img>
-              
-              </div>
-
-             
+              <img className='set' src="assets/orange.jpg"  ></img>
+              </div>             
               <div >
-              <img    src="assets/watermelon.jpg"  ></img>
+              <img   className='set'  src="assets/watermelon.jpg"  ></img>
               </div>
               <div >
-             
-             <img    src="assets/strawberry.jpg"  ></img>
+             <img   className='set'  src="assets/strawberry.jpg"  ></img>
              </div>
              <div >
-             
-             <img  src="assets/lemonflavw.jpg"  ></img>
+             <img className='set'  src="assets/lemonflavw.jpg"  ></img>
              </div>
-
             </Carousel>
-            <Divider orientation="left">New Products</Divider>
+            <Divider orientation="left">Most Sold Products</Divider>
             <Row justify="space-around">
               {
                 <Card
@@ -89,6 +82,117 @@ function Home() {
                   <Meta title="title" description="This is the description" />
                 </Card>
               }
+              <Card
+                  style={{ width: 150 }}
+                  cover={
+                    <img
+                      alt="example"
+                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                    />
+                  }
+                  actions={[
+                    <SettingOutlined key="setting" />,
+                    <EditOutlined key="edit" />,
+                    <EllipsisOutlined key="ellipsis" />,
+                  ]}
+                >
+                  <Meta title="title" description="This is the description" />
+                </Card>
+                <Card
+                  style={{ width: 150 }}
+                  cover={
+                    <img
+                      alt="example"
+                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                    />
+                  }
+                  actions={[
+                    <SettingOutlined key="setting" />,
+                    <EditOutlined key="edit" />,
+                    <EllipsisOutlined key="ellipsis" />,
+                  ]}
+                >
+                  <Meta title="title" description="This is the description" />
+                </Card>
+                <Card
+                  style={{ width: 150 }}
+                  cover={
+                    <img
+                      alt="example"
+                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                    />
+                  }
+                  actions={[
+                    <SettingOutlined key="setting" />,
+                    <EditOutlined key="edit" />,
+                    <EllipsisOutlined key="ellipsis" />,
+                  ]}
+                >
+                  <Meta title="title" description="This is the description" />
+                </Card>
+                <Card
+                  style={{ width: 150 }}
+                  cover={
+                    <img
+                      alt="example"
+                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                    />
+                  }
+                  actions={[
+                    <SettingOutlined key="setting" />,
+                    <EditOutlined key="edit" />,
+                    <EllipsisOutlined key="ellipsis" />,
+                  ]}
+                >
+                  <Meta title="title" description="This is the description" />
+                </Card><Card
+                  style={{ width: 150 }}
+                  cover={
+                    <img
+                      alt="example"
+                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                    />
+                  }
+                  actions={[
+                    <SettingOutlined key="setting" />,
+                    <EditOutlined key="edit" />,
+                    <EllipsisOutlined key="ellipsis" />,
+                  ]}
+                >
+                  <Meta title="title" description="This is the description" />
+                </Card>
+                <Card
+                  style={{ width: 150 }}
+                  cover={
+                    <img
+                      alt="example"
+                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                    />
+                  }
+                  actions={[
+                    <SettingOutlined key="setting" />,
+                    <EditOutlined key="edit" />,
+                    <EllipsisOutlined key="ellipsis" />,
+                  ]}
+                >
+                  <Meta title="title" description="This is the description" />
+                </Card>
+                <Card
+                  style={{ width: 150 }}
+                  cover={
+                    <img
+                      alt="example"
+                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                    />
+                  }
+                  actions={[
+                    <SettingOutlined key="setting" />,
+                    <EditOutlined key="edit" />,
+                    <EllipsisOutlined key="ellipsis" />,
+                  ]}
+                >
+                  <Meta title="title" description="This is the description" />
+                </Card>
             </Row>
           </Content>
         </Layout>

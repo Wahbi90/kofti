@@ -26,9 +26,9 @@ function Sidebar({ changeCategory }) {
           position: 'fixed',
           left: 0,
           padding: '61px 0px 0px',
-          zIndex: 1,
+          zIndex: 2,
           margin: '64px 0px 6px',
-          background: 'white',
+          background: '#ffffff',
           border: '#d4d2d270',
           borderStyle: 'groove',
           borderWidth: '1px',
@@ -37,10 +37,10 @@ function Sidebar({ changeCategory }) {
       >
         <div className="logo" />
         <Input placeholder="Basic usage" />
-        <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
-          <SubMenu key="1" icon={<UserOutlined />} title="clothes">
+        <Menu  style={{background: '#ffffff00'}}theme="light" mode="inline" defaultSelectedKeys={['1']}>
+          <SubMenu   key="1" icon={<UserOutlined />} title="clothes">
             {/* <Menu.Item key="1">option1</Menu.Item> */}
-            <Menu.Item key="1" onClick={() => changeCategory('men clothing')}>
+            <Menu.Item style={{background: '#ffffff00'}} key="1" onClick={() => changeCategory('men clothing')}>
               Men Clothing
             </Menu.Item>
             <Menu.Item key="2" onClick={() => changeCategory('women clothing')}>
