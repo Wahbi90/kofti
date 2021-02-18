@@ -72,17 +72,17 @@ export class ProductService {
         updatedProduct.save();
       }
     
-      async deleteProduct(prodId: string) {
-        const result = await this.productModel.deleteOne({_id: prodId}).exec();
+      async deleteProduct(prodtitle: string) {
+        const result = await this.productModel.deleteOne({title: prodtitle }).exec();
         if (result.n === 0) {
           throw new NotFoundException('Could not find product.');
         }
       }
     
-      private async findProduct(id: string): Promise<Product> {
+      private async findProduct(title: string): Promise<Product> {
         let product;
         try {
-          product = await this.productModel.findById(id).exec();
+          product = await this.productModel.find({title:title}).exec();
         } catch (error) {
           throw new NotFoundException('Could not find product.');
         }

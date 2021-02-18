@@ -11,7 +11,7 @@ export class CheckoutController {
       @Body('phoneNumber') userphoneNumber: number,
       @Body('adress') useradress:String,
       @Body('zipCode') userzipCode: number,
-      @Body('cartItems') usercartItems:object,
+      @Body('cartItems') usercartItems:any,
     ) {
         
 

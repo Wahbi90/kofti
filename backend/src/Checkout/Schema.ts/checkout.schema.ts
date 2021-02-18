@@ -5,5 +5,5 @@ export const CheckoutSchema = new mongoose.Schema({
   phoneNumber: Number,
   adress: String,
   zipCode: Number,
-  cartItems:Object,
+  cartItems:Array,
 });
