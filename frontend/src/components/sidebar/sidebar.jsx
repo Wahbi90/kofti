@@ -22,13 +22,17 @@ const getCateg = async () => {
   console.log(datacateg.data, 'yooooo');
   allCateg = datacateg.data;
   return allCateg;
-  window.reload()
+  window.reload();
 };
 getCateg();
 
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
 function Sidebar({ changeCategory }) {
+  function handelChange(e) {
+    e.target.value;
+  }
+
   return (
     <Layout>
       {/* <img class="logo" src="logo.png" alt="FreshkyLogo" /> */}
@@ -48,13 +52,12 @@ function Sidebar({ changeCategory }) {
         }}
       >
         <div className="logo" />
-        <Input placeholder="Basic usage" />
+        <Input placeholder="Basic usage" onChange={(e) => handelChange(e)} />
         <Menu
           style={{ background: '#ffffff00' }}
           theme="light"
           mode="inline"
           defaultSelectedKeys={['1']}
-          
         >
           {allCateg.map((e, i) => {
             console.log(e);
@@ -73,7 +76,8 @@ function Sidebar({ changeCategory }) {
     </Layout>
   );
 }
-
+const mapStateToProps = (state) => ({
+  products: state.products,
+});
 const mapDispatchToProps = { changeCategory };
-export default connect(null, mapDispatchToProps)(Sidebar);
-
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

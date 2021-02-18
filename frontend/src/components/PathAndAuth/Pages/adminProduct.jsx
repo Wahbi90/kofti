@@ -207,9 +207,10 @@ class Adminproducts extends React.Component {
         category: this.state.category,
         image: this.state.image,
       })
-      .then((response) => {
-        console.log(response);
-      })
+      .then(
+        (response) => console.log('response from server', response),
+        location.reload(),
+      )
       .catch((err) => {
         console.log(err, 'error from post ');
       });
@@ -304,7 +305,10 @@ class Adminproducts extends React.Component {
     console.log(e);
     axios
       .delete('http://localhost:8081/product/' + e)
-      .then((response) => console.log('response from server', response))
+      .then(
+        (response) => console.log('response from server', response),
+        location.reload(),
+      )
       .catch((err) => console.log(err, 'from server'));
   };
   render() {
