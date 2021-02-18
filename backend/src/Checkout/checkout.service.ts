@@ -11,7 +11,7 @@ export class CheckoutService {
         @InjectModel('Checkout') private readonly checkoutModel: Model<Checkout>,
       ) {}
     
-      async insertCheckoutUser(fullName: string, phoneNumber: number,adress:String, zipCode:number,cartItems:object) {
+      async insertCheckoutUser(fullName: string, phoneNumber: number,adress:String, zipCode:number,cartItems:any) {
         const newCheckoutUser = new this.checkoutModel({
          fullName,
          phoneNumber,

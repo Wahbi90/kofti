@@ -17,65 +17,9 @@ import {
 import { DownOutlined } from '@ant-design/icons';
 import React from 'react';
 import Draggable from 'react-draggable';
-
 import { UploadOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import axios from 'axios';
-
-const columns = [
-  {
-    title: 'Product Name',
-    dataIndex: 'title',
-  },
-  {
-    title: 'categories',
-    dataIndex: 'category',
-    sorter: (a, b) => a.Quantity - b.Quantity,
-  },
-  {
-    title: 'Image',
-    dataIndex: 'url',
-    render: (tags) => (
-      <Space>
-        <Upload
-          action="data"
-          listType="url"
-          defaultFileList={[url]}
-          className="upload-list-inline"
-        >
-          <Button icon={<UploadOutlined />}>Upload</Button>
-        </Upload>
-      </Space>
-    ),
-  },
-  {
-    title: 'Price',
-    dataIndex: 'price',
-    filters: [
-      {
-        text: '45002',
-        value: '4500',
-      },
-      {
-        text: '4500',
-        value: '4500',
-      },
-    ],
-    // onFilter: (value, record) => record.Price.indexOf(value) === 0,
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    sorter: true,
-    render: () => (
-      <Space size="middle">
-        <Button danger>Delete</Button>
-        <Button type="link">update</Button>
-      </Space>
-    ),
-  },
-];
-
 const expandable = {
   expandedRowRender: (record) => <p>{record.description}</p>,
 };
@@ -92,7 +36,6 @@ const fileList = [
     thumbUrl: 'url',
   },
 ];
-
 const title = () =>
   this.state.data.map((element) => {
     return element.title;
@@ -133,10 +76,67 @@ const EditableCell = ({
     </td>
   );
 };
-
 class Adminproducts extends React.Component {
   constructor(props) {
     super(props);
+    this.columns = [
+      {
+        title: 'Product Name',
+        dataIndex: 'title',
+      },
+      {
+        title: 'categories',
+        dataIndex: 'category',
+        sorter: (a, b) => a.Quantity - b.Quantity,
+      },
+      {
+        title: 'Image',
+        dataIndex: 'url',
+        render: (tags) => (
+          <Space>
+            <Upload
+              action="data"
+              listType="url"
+              defaultFileList={[url]}
+              className="upload-list-inline"
+            >
+              <Button icon={<UploadOutlined />}>Upload</Button>
+            </Upload>
+          </Space>
+        ),
+      },
+      {
+        title: 'Price',
+        dataIndex: 'price',
+        filters: [
+          {
+            text: '45002',
+            value: '4500',
+          },
+          {
+            text: '4500',
+            value: '4500',
+          },
+        ],
+        // onFilter: (value, record) => record.Price.indexOf(value) === 0,
+      },
+      {
+        title: 'Action',
+        key: 'action',
+        sorter: true,
+        render: (product) => (
+          <Space size="middle">
+            <Button
+              danger
+              onClick={this.handelDelete.bind(this, product.title)}
+            >
+              Delete
+            </Button>
+            <Button type="link">update</Button>
+          </Space>
+        ),
+      },
+    ];
     this.state = {
       imageSelected: '',
       bordered: false,
@@ -163,7 +163,6 @@ class Adminproducts extends React.Component {
       categories: [],
       arrexamples: [],
     };
-
     this.selectImage = this.selectImage.bind(this);
   }
   async componentWillMount() {
@@ -186,7 +185,6 @@ class Adminproducts extends React.Component {
         return obj;
       });
       this.setState({ categories: arr });
-
       console.log('sleh', this.state.categories);
     };
     categ();
@@ -197,7 +195,6 @@ class Adminproducts extends React.Component {
       visible: true,
     });
   };
-
   handleOk = (e) => {
     console.log(e);
     this.setState({
@@ -217,7 +214,6 @@ class Adminproducts extends React.Component {
         console.log(err, 'error from post ');
       });
   };
-
   handleCancel = (e) => {
     console.log(e);
     this.setState({
@@ -227,47 +223,36 @@ class Adminproducts extends React.Component {
   handleToggle = (prop) => (enable) => {
     this.setState({ [prop]: enable });
   };
-
   handleSizeChange = (e) => {
     this.setState({ size: e.target.value });
   };
-
   handleTableLayoutChange = (e) => {
     this.setState({ tableLayout: e.target.value });
   };
-
   handleExpandChange = (enable) => {
     this.setState({ expandable: enable ? expandable : undefined });
   };
-
   handleEllipsisChange = (enable) => {
     this.setState({ ellipsis: enable });
   };
-
   handleTitleChange = (enable) => {
     this.setState({ title: enable ? title : undefined });
   };
-
   handleHeaderChange = (enable) => {
     this.setState({ showHeader: enable ? showHeader : false });
   };
-
   handleFooterChange = (enable) => {
     this.setState({ footer: enable ? footer : undefined });
   };
-
   handleRowSelectionChange = (enable) => {
     this.setState({ rowSelection: enable ? {} : undefined });
   };
-
   handleYScrollChange = (enable) => {
     this.setState({ yScroll: enable });
   };
-
   handleXScrollChange = (e) => {
     this.setState({ xScroll: e.target.value });
   };
-
   handleDataChange = (hasData) => {
     this.setState({ hasData });
   };
@@ -283,7 +268,6 @@ class Adminproducts extends React.Component {
       },
     });
   };
-
   selectImage = (event) => {
     let pic = event.target.files[0];
     console.log(pic);
@@ -298,12 +282,10 @@ class Adminproducts extends React.Component {
       })
       .catch((err) => console.log(err));
   };
-
   selectName = (event) => {
     this.setState({ title1: event.target.value });
     console.log('fr', this.state.title1);
   };
-
   selectPrice = (event) => {
     this.setState({ price: event.target.value });
     console.log('fraj', this.state.price);
@@ -318,7 +300,13 @@ class Adminproducts extends React.Component {
       this.setState({ category: res });
     }
   }
-
+  handelDelete = (e) => {
+    console.log(e);
+    axios
+      .delete('http://localhost:8081/product/' + e)
+      .then((response) => console.log('response from server', response))
+      .catch((err) => console.log(err, 'from server'));
+  };
   render() {
     // const { category } = this.props;
     const { xScroll, yScroll, ...state } = this.state;
@@ -330,8 +318,7 @@ class Adminproducts extends React.Component {
     if (xScroll) {
       scroll.x = '100vw';
     }
-
-    const tableColumns = columns.map((item) => ({
+    const tableColumns = this.columns.map((item) => ({
       ...item,
       ellipsis: state.ellipsis,
     }));
@@ -389,7 +376,6 @@ class Adminproducts extends React.Component {
             onChange={this.selectName.bind(this)}
           />
           <br />
-
           <Divider orientation="left">Price</Divider>
           <Input placeholder="Price" onChange={this.selectPrice} />
           <br />
@@ -409,7 +395,6 @@ class Adminproducts extends React.Component {
             placeholder="new category"
             onChange={this.onChange1.bind(this)}
           />
-
           <Divider orientation="left">pictures</Divider>
           <input
             type="file"
