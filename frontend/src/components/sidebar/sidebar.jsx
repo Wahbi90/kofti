@@ -1,4 +1,4 @@
-import { Layout, Menu, Breadcrumb,  Input } from 'antd';
+import { Layout, Menu, Breadcrumb, Input } from 'antd';
 import { connect } from 'react-redux';
 import React from 'react';
 import { changeCategory } from '../../redux/products/productsActions';
@@ -12,7 +12,20 @@ import {
   UploadOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
+import { Component } from 'react';
+import Axios from 'axios';
 // import postItems from '../../App';
+
+let allCateg = [];
+
+Axios.get('http://localhost:8081/product/categories')
+  .then((response) => {
+    allCateg = response.data;
+  })
+  .catch((err) => {
+    console.log(err, 'hedhi el err');
+  });
+
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
 function Sidebar({ changeCategory }) {
@@ -32,41 +45,31 @@ function Sidebar({ changeCategory }) {
           border: '#d4d2d270',
           borderStyle: 'groove',
           borderWidth: '1px',
-
         }}
       >
         <div className="logo" />
         <Input placeholder="Basic usage" />
-        <Menu  style={{background: '#ffffff00'}}theme="light" mode="inline" defaultSelectedKeys={['1']}>
-          <SubMenu   key="1" icon={<UserOutlined />} title="clothes">
-            {/* <Menu.Item key="1">option1</Menu.Item> */}
-            <Menu.Item style={{background: '#ffffff00'}} key="1" onClick={() => changeCategory('men clothing')}>
-              Men Clothing
-            </Menu.Item>
-            <Menu.Item key="2" onClick={() => changeCategory('women clothing')}>
-              Women Clothing
-            </Menu.Item>
-          </SubMenu>
-          <SubMenu key="4" icon={<AppstoreOutlined />} title="accessoires">
-            <Menu.Item key="13" onClick={() => changeCategory('jewelery')}>
-              jewelery
-            </Menu.Item>
-          </SubMenu>
-          <SubMenu key="2" icon={<VideoCameraOutlined />} title="electronics">
-            <Menu.Item key="5" onClick={() => changeCategory('electronics')}>
-              electronics
-            </Menu.Item>
-            {/* <Menu.Item key="6">option6</Menu.Item> */}
-          </SubMenu>
-          <SubMenu key="3" icon={<ShopOutlined />} title="food">
-          <Menu.Item key="6" onClick={() => changeCategory('food')}> 
-             All food
-            </Menu.Item>
-             </SubMenu>
+        <Menu
+          style={{ background: '#ffffff00' }}
+          theme="light"
+          mode="inline"
+          defaultSelectedKeys={['1']}
+        >
+          {allCateg.map((e, i) => {
+            console.log(e)
+           return <Menu.Item
+              style={{ background: '#ffffff00' }}
+              key={i}
+              onClick={() => changeCategory(e)}
+            >
+              {e}
+            </Menu.Item>;
+          })}
         </Menu>
       </Sider>
     </Layout>
   );
 }
+
 const mapDispatchToProps = { changeCategory };
 export default connect(null, mapDispatchToProps)(Sidebar);
