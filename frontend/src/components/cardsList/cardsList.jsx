@@ -64,7 +64,9 @@ class CardsList extends Component {
              .map((post, i) => (
                 <Col style={{ paddingLeft: '40px'}}key={i} span={4}>
                   <Space size={this.state.size}>
+                  
                   <Card
+                  
                   hoverable
                   style={{ width: 170 }}
                     cover={<img alt="example" src={post.image} />}
@@ -89,6 +91,7 @@ class CardsList extends Component {
                         </Button>,
                       ]}
                   </Card>
+                 
                     {/* <Card
                     hoverable
                       style={{ width: 240 , marginRight: 50, width: 100, height: 100 , background: 'white' }}
