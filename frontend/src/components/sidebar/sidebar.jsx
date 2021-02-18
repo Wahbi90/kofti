@@ -17,14 +17,14 @@ import Axios from 'axios';
 // import postItems from '../../App';
 
 let allCateg = [];
-
-Axios.get('http://localhost:8081/product/categories')
-  .then((response) => {
-    allCateg = response.data;
-  })
-  .catch((err) => {
-    console.log(err, 'hedhi el err');
-  });
+const getCateg = async () => {
+  const datacateg = await Axios.get('http://localhost:8081/product/categories');
+  console.log(datacateg.data, 'yooooo');
+  allCateg = datacateg.data;
+  return allCateg;
+  window.reload()
+};
+getCateg();
 
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -41,7 +41,7 @@ function Sidebar({ changeCategory }) {
           padding: '61px 0px 0px',
           zIndex: 2,
           margin: '64px 0px 6px',
-          background: '#ffffff',
+          background: '#FFFFFF',
           border: '#d4d2d270',
           borderStyle: 'groove',
           borderWidth: '1px',
@@ -54,16 +54,19 @@ function Sidebar({ changeCategory }) {
           theme="light"
           mode="inline"
           defaultSelectedKeys={['1']}
+          
         >
           {allCateg.map((e, i) => {
-            console.log(e)
-           return <Menu.Item
-              style={{ background: '#ffffff00' }}
-              key={i}
-              onClick={() => changeCategory(e)}
-            >
-              {e}
-            </Menu.Item>;
+            console.log(e);
+            return (
+              <Menu.Item
+                style={{ background: '#ffffff00' }}
+                key={i}
+                onClick={() => changeCategory(e)}
+              >
+                {e}
+              </Menu.Item>
+            );
           })}
         </Menu>
       </Sider>
@@ -73,3 +76,4 @@ function Sidebar({ changeCategory }) {
 
 const mapDispatchToProps = { changeCategory };
 export default connect(null, mapDispatchToProps)(Sidebar);
+
