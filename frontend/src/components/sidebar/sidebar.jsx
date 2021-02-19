@@ -1,6 +1,6 @@
 import { Layout, Menu, Breadcrumb, Input } from 'antd';
 import { connect } from 'react-redux';
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { changeCategory } from '../../redux/products/productsActions';
 import {
   AppstoreOutlined,
@@ -16,19 +16,32 @@ import { Component } from 'react';
 import Axios from 'axios';
 // import postItems from '../../App';
 
-let allCateg = [];
 
-Axios.get('http://localhost:8081/product/categories')
-  .then((response) => {
-    allCateg = response.data;
-  })
-  .catch((err) => {
-    console.log(err, 'hedhi el err');
-  });
+
+
+
 
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
 function Sidebar({ changeCategory }) {
+  const [categ, setCateg] = useState([])
+ function getCateg(){ 
+  
+   Axios.get('http://localhost:8081/product/categories')
+    .then((response) => {
+      response.data.map((e) => {categ.push(e)});
+      setCateg(categ)
+      return categ
+    })
+    .catch((err) => {
+      console.log(err, 'hedhi el err');
+    });
+ }
+  
+  useEffect(() => {
+getCateg()
+    },[])
+
   return (
     <Layout>
       {/* <img class="logo" src="logo.png" alt="FreshkyLogo" /> */}
@@ -54,9 +67,9 @@ function Sidebar({ changeCategory }) {
           theme="light"
           mode="inline"
           defaultSelectedKeys={['1']}
-        >
-          {allCateg.map((e, i) => {
-            console.log(e)
+        >   
+          {categ.map((e, i) => {
+            console.log(e,'categ 2')
            return <Menu.Item
               style={{ background: '#ffffff00' }}
               key={i}

@@ -71,16 +71,18 @@ class CardsList extends Component {
                   
                   hoverable
                   style={{ width: 170 }}
-                    cover={<img alt="example" src={post.image} />}
+                    cover={<img alt="example" src={post.image}  style={{height :'170px', width: '300px'}}   />}
                     >
                       <Meta title={post.title} description={post.price} />
                       {[
+                        <div style={{ padding: '0px 1px 0px 5px'}}>
                         <InputNumber
                           min={1}
                           max={100000}
                           defaultValue={1}
                           onChange={this.handelchange}
-                        />,
+                          style={{width : '60px'}}
+                        />
                         <Button
                           onClick={() => {
                             this.props.addToCart(
@@ -92,7 +94,8 @@ class CardsList extends Component {
                           }}
                         >
                           ➕
-                        </Button>,
+                        </Button>
+                        </div>
                       ]}
                   </Card>
                  

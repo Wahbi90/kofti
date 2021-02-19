@@ -1,4 +1,4 @@
-import { Table } from 'antd';
+import { Button, Table } from 'antd';
 import React, { Component } from 'react'
 
 const columns = [
@@ -9,7 +9,7 @@ const columns = [
     title: 'Action',
     dataIndex: '',
     key: 'x',
-    render: () => <a>Delete</a>,
+    render: () => <Button danger>Delete</Button>,
   },
 ];
 
