@@ -7,18 +7,45 @@ import { RootState } from '../../../store';
 import StripeCheckout, { Token } from 'react-stripe-checkout';
 import { Button } from 'antd';
 import { Cascader, Divider } from 'antd';
+import axios from 'axios';
+
+const obj = {};
+
+const handelchange: any = (e) => {
+  obj['fullName'] = e.target.value;
+  console.log(obj);
+};
+const handelchange1: any = (e) => {
+  obj['phoneNumber'] = e.target.value;
+  console.log(obj);
+};
+const handelchange2: any = (e) => {
+  obj['adress'] = e.target.value;
+  console.log(obj);
+};
+const handelchange3: any = (e) => {
+  obj['zipCode'] = e.target.value;
+  console.log(obj);
+};
+const handelClick = () => {
+  let productName = JSON.parse(localStorage.getItem('cartItems')).map((el) => {
+    return el.title;
+  });
+  obj['cartItems'] = productName;
+  axios
+    .post('http://localhost:8081/checkout', obj)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 const Checkout = () => {
-  // const [personalName, setPersonalName] = useState('');
-  // const [adress, setAdress] = useState('');
-  // const [zipCode, setZipCode] = useState('');
-  // const dispatch = useDispatch();
-
-  //   const submitHandler = (e: FormEvent) => {
-  //     e.preventDefault();
-   
-let productName = JSON.parse(localStorage.getItem('cartItems')).map(el=>{return el.title})
-
+  let productName = JSON.parse(localStorage.getItem('cartItems')).map((el) => {
+    return el.title;
+  });
 
   return (
     <div className="container">
@@ -33,24 +60,28 @@ let productName = JSON.parse(localStorage.getItem('cartItems')).map(el=>{return 
             name="Full-Name"
             placeholder="Full-Name"
             label="Full-Name"
+            onChange={handelchange}
           />
           <Input
             type="number"
             name="Phone-number"
             placeholder="Phone-number"
             label="Phone-number"
+            onChange={handelchange1}
           />
           <Input
             type="text"
             name="Adress"
             placeholder="Adress"
             label="Adress"
+            onChange={handelchange2}
           />
           <Input
             type="text"
             name="ZipCode"
             placeholder="ZipCode"
             label="ZipCode"
+            onChange={handelchange3}
           />
           <fieldset>
             <legend>Region preferences</legend>
@@ -84,7 +115,12 @@ let productName = JSON.parse(localStorage.getItem('cartItems')).map(el=>{return 
             </select>
           </fieldset>
           <br />
-          <Button className="is-primary is-fullwidth mt-5" >Pay at delivery</Button>
+          <Button
+            className="is-primary is-fullwidth mt-5"
+            onClick={handelClick}
+          >
+            Pay at delivery
+          </Button>
           <div>
             <StripeCheckout
               stripeKey="pk_test_51IJxTPHsdDLmCbLGE7cwb9KmoftRqAojzRTWQZLJ6NXfzDUjZqhCABV0mc3HjaaYf3rkmxe91qOLtegyUaeW8KwI00DbaQqC96"
@@ -93,9 +129,9 @@ let productName = JSON.parse(localStorage.getItem('cartItems')).map(el=>{return 
               }}
               billingAddress
               shippingAddress
-              amount={+localStorage.getItem('sum')*100}
+              amount={+localStorage.getItem('sum') * 100}
               name={productName}
-              currency='TND'
+              currency="TND"
             />
           </div>
         </form>
@@ -103,6 +139,5 @@ let productName = JSON.parse(localStorage.getItem('cartItems')).map(el=>{return 
     </div>
   );
 };
-
 
 export default Checkout;
