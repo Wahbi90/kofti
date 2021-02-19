@@ -30,7 +30,19 @@ export class ProductController {
     });
     return categories;
   }
+// @Get()
+// async getAll(){
 
+// }
+
+  @Post('pagination')
+  async getAllProducts(@Body('page') page: number) {
+    const products = await this.productService.getProducts();
+    const currentProducts = products.filter((el, i) => {
+      return (page - 1) * 35 <= i && page * 35 - 1;
+    });
+    return currentProducts;
+  }
   @Post()
   async addProduct(
     @Body('title') prodTitle: string,
@@ -44,17 +56,15 @@ export class ProductController {
       prodCategory,
       prodImage,
     );
-    return { id: generatedId };
+    return { id: generatedId }
+    
+  }
+  @Get()
+  async getAll() {
+    const products = await this.productService.getProducts();
+    return products.reverse();
   }
 
-  @Post()
-  async getAllProducts(@Body('page') page: number) {
-    const products = await this.productService.getProducts();
-    const currentProducts = products.filter((el, i) => {
-      return (page - 1) * 35 <= i && page * 35 - 1;
-    });
-    return currentProducts;
-  }
 
   @Get(':id')
   getProduct(@Param('id') prodId: string) {
@@ -84,6 +94,7 @@ export class ProductController {
     return null;
   }
 }
+
 // @Post('/create')
 // async addProduct(@Res() res, @Body() createProductDTO: CreateProductDTO) {
 //  const product = await this.productService.addProduct(createProductDTO);
