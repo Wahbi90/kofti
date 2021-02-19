@@ -31,7 +31,6 @@ export class ProductController {
     return categories;
   }
 
-
   @Post()
   async addProduct(
     @Body('title') prodTitle: string,
@@ -48,13 +47,14 @@ export class ProductController {
     return { id: generatedId };
   }
 
-
-  @Get()
-  async getAllProducts() {
+  @Post()
+  async getAllProducts(@Body('page') page: number) {
     const products = await this.productService.getProducts();
-    return products.reverse();
+    const currentProducts = products.filter((el, i) => {
+      return (page - 1) * 35 <= i && page * 35 - 1;
+    });
+    return currentProducts;
   }
-
 
   @Get(':id')
   getProduct(@Param('id') prodId: string) {
@@ -83,20 +83,18 @@ export class ProductController {
     await this.productService.deleteProduct(prodtitle);
     return null;
   }
-
 }
-  // @Post('/create')
-  // async addProduct(@Res() res, @Body() createProductDTO: CreateProductDTO) {
-  //  const product = await this.productService.addProduct(createProductDTO);
-  //     return res.status(HttpStatus.OK).json({
-  //      message: "Product has been created successfully",
-  //         product
-  //     })
-  //  }
+// @Post('/create')
+// async addProduct(@Res() res, @Body() createProductDTO: CreateProductDTO) {
+//  const product = await this.productService.addProduct(createProductDTO);
+//     return res.status(HttpStatus.OK).json({
+//      message: "Product has been created successfully",
+//         product
+//     })
+//  }
 
-  // @Get('product')
-  // async getAllProduct(@Res() res) {
-  //     const products = await this.productService.getAllProducts();
-  //     return res.status(HttpStatus.OK).json(products);
-  // }
-
+// @Get('product')
+// async getAllProduct(@Res() res) {
+//     const products = await this.productService.getAllProducts();
+//     return res.status(HttpStatus.OK).json(products);
+// }
