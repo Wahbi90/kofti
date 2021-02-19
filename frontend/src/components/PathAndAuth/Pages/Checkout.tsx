@@ -2,10 +2,11 @@ import React, { useState, FormEvent, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Input from '../UI/Input';
-import Button from '../UI/Button';
 import { signin, setError, setLoading } from '../../../redux/auth/authActions';
 import { RootState } from '../../../store';
 import StripeCheckout, { Token } from 'react-stripe-checkout';
+import { Button } from 'antd';
+import { Cascader, Divider } from 'antd';
 
 const Checkout = () => {
   // const [personalName, setPersonalName] = useState('');
@@ -83,9 +84,7 @@ let productName = JSON.parse(localStorage.getItem('cartItems')).map(el=>{return 
             </select>
           </fieldset>
           <br />
-          <button className="is-primary is-fullwidth mt-5" type="button">
-            Pay at delivery
-          </button>
+          <Button className="is-primary is-fullwidth mt-5" >Pay at delivery</Button>
           <div>
             <StripeCheckout
               stripeKey="pk_test_51IJxTPHsdDLmCbLGE7cwb9KmoftRqAojzRTWQZLJ6NXfzDUjZqhCABV0mc3HjaaYf3rkmxe91qOLtegyUaeW8KwI00DbaQqC96"

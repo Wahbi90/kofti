@@ -29,7 +29,7 @@ class Basket extends Component {
         <div className="layout-inline row th">
         <div className="col col-pro">Product</div>
     
-        <div className="col col-price align-center ">Price</div>   ,    
+        <div className="col col-price align-center ">Price</div>       
         <div className="col col-qty ">QTY</div>
         <div className="col col-qty ">Delete</div>
         
@@ -50,8 +50,8 @@ class Basket extends Component {
           <p>{item.title}</p>
         </div>
         
-        <div className="col col-price col-numeric align-center " style={{paddingTop: '100px'}}>
-          <p>{item.price}DNT</p>
+        <div className="col col-price col-numeric align-center " style={{paddingTop: '50px'}}>
+          <p>{item.price}TND</p>
         </div>
 
         <div className="col col-qty layout-inline" style={{padding: '80px '}}>
@@ -60,7 +60,7 @@ class Basket extends Component {
         </div>
         <CloseCircleOutlined 
                     className="btn btn-danger btn-xs"
-                    style={{ float: 'right'  , color: 'red' , fontSize: '25px' , padding: '100px' }}
+                    style={{    color: 'red' , fontSize: '25px' , padding: '100px' }}
                     onClick={(e) => {
                       this.props.removeFromCart(this.props.cartItems, item);
                     }}
@@ -80,7 +80,7 @@ class Basket extends Component {
             </h2>
             <b className="total">Total:{localStorage.getItem('sum')}</b>
             <br></br>
-            <button onClick={this.checkout.bind(this)}>CheckOut</button>
+            <Button type="primary" onClick={this.checkout.bind(this)}>CheckOut</Button>
           </div>
         )}
       </div>

@@ -14,10 +14,13 @@ import { connect } from 'react-redux';
 import './cardsList.css';
 import { addToCart, removeFromCart } from '../../redux/cart/cartActions';
 import axios from 'axios';
+import { Input } from 'antd';
+import { AudioOutlined } from '@ant-design/icons';
 
 
 const { Footer } = Layout;
 const { Meta } = Card;
+const { Search } = Input;
 class CardsList extends Component {
   constructor(props) {
     super(props);
@@ -46,7 +49,13 @@ class CardsList extends Component {
 
     function onShowSizeChange(current, pageSize) {}
     return (
+      
       <div className="container" style={{ zIndex: '1' }}>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <Search placeholder="input search text"  enterButton  size ='small' style={{width: '500px', justifyContent : 'center', marginLeft: '35%'}}/>
         <Row
           style={{ marginLeft: 200, marginTop: 100 }}
           // justify="space-between"

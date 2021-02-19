@@ -38,7 +38,7 @@ const Headers: FC = () => {
     <Layout>
       <Header
         style={{
-          background: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+          background: 'linear-gradient(135deg, #fed6e3  0%, #a8edea 100%)',
           position: 'fixed',
           zIndex: 2,
           width: '100%',
