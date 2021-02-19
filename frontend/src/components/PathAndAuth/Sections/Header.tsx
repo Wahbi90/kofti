@@ -39,7 +39,7 @@ const Headers: FC = () => {
       <Header
       
         style={{
-          backgroundImage: 'url(./logo.png)',
+          backgroundImage: ('untitled-1.png'),
           background: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
           position: 'fixed',
           zIndex: 2,
