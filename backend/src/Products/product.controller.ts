@@ -30,12 +30,22 @@ export class ProductController {
     });
     return categories;
   }
+
   @Post('search')
   async getProd(@Body('title') finder: string) {
     const products = await this.productService.findProducts(finder);
     return products;
   }
 
+
+  @Post('pagination')
+  async getAllProducts(@Body('page') page: number) {
+    const products = await this.productService.getProducts();
+    const currentProducts = products.filter((el, i) => {
+      return (page - 1) * 35 <= i && page * 35 - 1;
+    });
+    return currentProducts;
+  }
   @Post()
   async addProduct(
     @Body('title') prodTitle: string,
@@ -49,11 +59,12 @@ export class ProductController {
       prodCategory,
       prodImage,
     );
-    return { id: generatedId };
+    return { id: generatedId }
+    
   }
 
   @Get()
-  async getAllProducts() {
+  async getAll() {
     const products = await this.productService.getProducts();
     return products.reverse();
   }
@@ -86,3 +97,4 @@ export class ProductController {
     return null;
   }
 }
+
