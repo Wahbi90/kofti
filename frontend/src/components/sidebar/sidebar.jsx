@@ -1,6 +1,6 @@
 import { Layout, Menu, Breadcrumb, Input } from 'antd';
 import { connect } from 'react-redux';
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { changeCategory } from '../../redux/products/productsActions';
 import {
   AppstoreOutlined,

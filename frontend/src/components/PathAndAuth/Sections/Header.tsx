@@ -37,7 +37,9 @@ const Headers: FC = () => {
   return (
     <Layout>
       <Header
+      
         style={{
+          backgroundImage: 'url(./logo.png)',
           background: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
           position: 'fixed',
           zIndex: 2,
@@ -46,6 +48,7 @@ const Headers: FC = () => {
           justifyContent: 'flex-end',
         }}
       >
+        
         <div className="logo" />
 
         {/* <Menu id='nevmenu' theme="dark" mode="horizontal" defaultSelectedKeys={['2']}> */}

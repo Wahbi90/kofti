@@ -9,15 +9,30 @@ import {
   Row,
   Col,
   Divider,
+  BackTop ,
 } from 'antd';
 import { connect } from 'react-redux';
 import './cardsList.css';
 import { addToCart, removeFromCart } from '../../redux/cart/cartActions';
 import axios from 'axios';
+import { Input } from 'antd';
+import { AudioOutlined } from '@ant-design/icons';
 
 
 const { Footer } = Layout;
 const { Meta } = Card;
+const { Search } = Input;
+const style = {
+  height: 40,
+  width: 70,
+  lineHeight: '40px',
+  borderRadius: 4,
+  backgroundColor: '#1088e9',
+  color: '#fff',
+  textAlign: 'center',
+  fontSize: 14,
+  marginLeft: '145%'
+};
 class CardsList extends Component {
   constructor(props) {
     super(props);
@@ -26,27 +41,78 @@ class CardsList extends Component {
       products: [],
       size: 'large',
       sub: 1,
+      offset: 0,
+      currentPageElements: [],
+      elementsPerPage: 30,  //change as per your need
+      pagesCount: 1,
+      totalElementsCount: 0
     };
   }
 
   componentWillMount() {
     axios.get('http://localhost:8081/product').then((response) => {
-      this.setState({ products: response.data });
+      this.setState({ products: response.data,
+                      totalElementsCount: response.data.length },() => {
+                        this.setPaginationStates();
+                    }); 
     });
   }
+ 
+
+
+
+
   handelchange = (e) => {
     console.log('yuiiiiiiiiiiiiiiii', e);
     this.setState({ sub: e });
   };
+  setElementsForCurrentPage = () => {
+    const { products, offset, elementsPerPage } = this.state;
+
+    const currentPageElements = products.slice(offset, offset + elementsPerPage);
+    console.log('el category', products )
+    console.log('the page elements', currentPageElements )
+    this.setState({
+        currentPageElements
+    });
+}
+
+handlePageClick = (pageNumber) => {
+  const { elementsPerPage } = this.state;
+  const currentPage = pageNumber - 1;
+  const offset = currentPage * elementsPerPage;
+  this.setState({
+      offset
+  }, () => {
+      this.setElementsForCurrentPage();
+  });
+}
+
+
+  setPaginationStates = () => {
+    const { totalElementsCount, elementsPerPage } = this.state;
+    this.setState({
+        pagesCount: Math.ceil(totalElementsCount / elementsPerPage)
+    }, () => {
+        this.setElementsForCurrentPage();
+    });
+}
 
   
 
   render() {
     const { category } = this.props;
-
+    const { currentPageElements, totalElementsCount, pagesCount, elementsPerPage } = this.state;
     function onShowSizeChange(current, pageSize) {}
     return (
+      
       <div className="container" style={{ zIndex: '1' }}>
+         
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <Search placeholder="input search text"  enterButton  size ='small' style={{width: '500px', justifyContent : 'center', marginLeft: '35%'}}/>
         <Row
           style={{ marginLeft: 200, marginTop: 100 }}
           // justify="space-between"
@@ -59,62 +125,32 @@ class CardsList extends Component {
           //   padding: '201px 201px 202px 206px',
           // }}
         >
+          {
+                    pagesCount > 1 &&
           <Space size={[8, 16]} wrap>
             <p>{this.state.count}</p>
-            {this.state.products
+            {currentPageElements
               .filter((el) => !category || el.category === category)
               .map((post, i) => (
                 <Col style={{ paddingLeft: '40px' }} key={i} span={4}>
                   <Space size={this.state.size}>
-                    <Card
-                      hoverable
-                      style={{ width: 170 }}
-                      cover={<img alt="example" src={post.image} />}
+                  
+                  <Card
+                  
+                  hoverable
+                  style={{ width: 170 }}
+                    cover={<img alt="example" src={post.image}  style={{height :'170px', width: '300px'}}   />}
                     >
                       <Meta title={post.title} description={post.price} />
                       {[
+                        <div style={{ padding: '0px 1px 0px 5px'}}>
                         <InputNumber
                           min={1}
                           max={100000}
                           defaultValue={1}
                           onChange={this.handelchange}
-                        />,
-                        <Button
-                          onClick={() => {
-                            this.props.addToCart(
-                              this.props.cartItems,
-                              post,
-                              this.state.sub,
-                            );
-                            this.state.sub = 1;
-                          }}
-                        >
-                          ➕
-                        </Button>,
-                      ]}
-                    </Card>
-                    {/* <Card
-                    hoverable
-                      style={{ width: 240 , marginRight: 50, width: 100, height: 100 , background: 'white' }}
-                      cover={
-                        <img
-                          src={post.image}
-                          style={{
-                            // width: 200,
-                            // height: 100,
-                            alignContent: 'center',
-                          }}
+                          style={{width : '60px'}}
                         />
-                          
-                      }
-                      // height="200" width="200"
-                      actions={[
-                        <InputNumber
-                          min={1}
-                          max={100000}
-                          defaultValue={1}
-                          onChange={this.handelchange}
-                        />,
                         <Button
                           onClick={() => {
                             this.props.addToCart(
@@ -126,37 +162,37 @@ class CardsList extends Component {
                           }}
                         >
                           ➕
-                        </Button>,
+                        </Button>
+                        </div>
                       ]}
-                    >
-                      <Meta
-                        style={{ fontSize: 10, marginBottoms: -100 }}
-                        title={
-                          <h6 style={{ fontSize: 10, alignItems: 'left' }}>
-                            {post.title}
-                          </h6>
-                        }
-                        description={<h3>{post.price}</h3>}
-                      />
-                    </Card> */}
+                  </Card>
                   </Space>
                 </Col>
               ))}
           </Space>
+  }
         </Row>
+        <BackTop>
+      <div style={style}>UP</div>
+    </BackTop>
         <Divider orientation="left"></Divider>
         <Pagination
-          showSizeChanger
-          onShowSizeChange={onShowSizeChange}
           defaultCurrent={1}
-          total={35}
+          onChange={this.handlePageClick}
+          size="small"
+          total={totalElementsCount}
+          showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
+          pageSize={elementsPerPage}
+          showSizeChanger={false}
           style={{ display: 'flex', justifyContent: 'center' }}
         />
         <Divider orientation="left"></Divider>
         <Footer style={{ textAlign: 'center' }}>
           Freshky ©2021 Created by R.M.A.M.S
         </Footer>
+  
       </div>
+      
     );
   }
 }

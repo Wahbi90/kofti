@@ -1,3 +1,4 @@
+
 import {
   Table,
   Switch,
@@ -61,6 +62,8 @@ const EditableCell = ({
     </td>
   );
 };
+
+
 
 export default class AdminOrders extends Component {
   constructor(props) {
