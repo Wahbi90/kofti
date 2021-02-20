@@ -31,6 +31,12 @@ export class ProductController {
     return categories;
   }
 
+  @Get()
+  async getAll() {
+    const products = await this.productService.getProducts();
+    return products.reverse();
+  }
+
   @Post()
   async addProduct(
     @Body('title') prodTitle: string,

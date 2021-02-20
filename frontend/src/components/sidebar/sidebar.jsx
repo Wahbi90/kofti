@@ -1,6 +1,6 @@
 import { Layout, Menu, Breadcrumb, Input } from 'antd';
 import { connect } from 'react-redux';
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { changeCategory } from '../../redux/products/productsActions';
 import {
   AppstoreOutlined,
@@ -15,24 +15,20 @@ import {
 import { Component } from 'react';
 import Axios from 'axios';
 // import postItems from '../../App';
-
 let allCateg = [];
 const getCateg = async () => {
   const datacateg = await Axios.get('http://localhost:8081/product/categories');
   console.log(datacateg.data, 'yooooo');
   allCateg = datacateg.data;
   return allCateg;
-  window.reload();
 };
 getCateg();
-
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
 function Sidebar({ changeCategory }) {
   function handelChange(e) {
     e.target.value;
   }
-
   return (
     <Layout>
       {/* <img class="logo" src="logo.png" alt="FreshkyLogo" /> */}
@@ -59,6 +55,7 @@ function Sidebar({ changeCategory }) {
           mode="inline"
           defaultSelectedKeys={['1']}
         >
+          {console.log('from el map ', allCateg)}
           {allCateg.map((e, i) => {
             console.log(e);
             return (
