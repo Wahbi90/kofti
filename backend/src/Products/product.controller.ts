@@ -31,6 +31,12 @@ export class ProductController {
     return categories;
   }
 
+  @Get()
+  async getAll() {
+    const products = await this.productService.getProducts();
+    return products.reverse();
+  }
+
   @Post('search')
   async getProd(@Body('title') finder: string) {
     const products = await this.productService.findProducts(finder);

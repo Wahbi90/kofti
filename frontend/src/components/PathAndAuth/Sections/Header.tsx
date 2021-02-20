@@ -9,9 +9,15 @@ import { InputNumber } from 'antd';
 import './Header.css';
 import { RootState } from '../../../store';
 import Basket from '../../cart/cart';
-
+import wahbi from './lastest.png';
 import { Dropdown, message, Space, Tooltip } from 'antd';
-import { ShoppingCartOutlined, DownOutlined, UserOutlined } from '@ant-design/icons';
+import {
+  ShoppingCartOutlined,
+  DownOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
+
+declare module '*.png';
 
 const Headers: FC = () => {
   const history = useHistory();
@@ -36,8 +42,8 @@ const Headers: FC = () => {
 
   return (
     <Layout>
+      {/* <img className="logo" src="../../../../public/logo.png"/> */}
       <Header
-      
         style={{
           backgroundImage: ('untitled-1.png'),
           background: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
@@ -48,8 +54,19 @@ const Headers: FC = () => {
           justifyContent: 'flex-end',
         }}
       >
-        
-        <div className="logo" />
+        <div className="elogo">
+          <img
+            src={wahbi}
+            alt="logo"
+            style={{ height: '100px', width: '100px', margin:
+            '6px 14px 0px 0px',
+            padding:
+            '34px 0px 0px' }}
+          />
+          {/* <img src={'../../../../public/assets/logo2.png'} alt="logo" /> */}
+          {/* <img src={'logo2.png'} alt="logo" /> */}
+          {/* <img src={} alt="logo" /> */}
+        </div>
 
         {/* <Menu id='nevmenu' theme="dark" mode="horizontal" defaultSelectedKeys={['2']}> */}
         {/* <Link
@@ -86,7 +103,14 @@ const Headers: FC = () => {
           {' '}
           {console.log('danfous khra and wahbi approves', items)}
           <Dropdown overlay={menu} trigger={['click']}>
-          <ShoppingCartOutlined className='basketbasket' style={{  margin: '14.9px 0px 0px 8px' , padding: '8px 6px 10px', fontSize: '19px'}}/>
+            <ShoppingCartOutlined
+              className="basketbasket"
+              style={{
+                margin: '14.9px 0px 0px 8px',
+                padding: '8px 6px 10px',
+                fontSize: '19px',
+              }}
+            />
             {/* <button className='basketbasket'  style={{  margin: '15px 0px 0px 8px' , padding: '14px 6px 10px'}}> </button> */}
           </Dropdown>
         </div>
