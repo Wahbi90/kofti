@@ -1,4 +1,4 @@
-import { Controller, Patch,Get, Res, HttpStatus, Post, Body, Param } from '@nestjs/common';
+import { Controller,Delete,Get, Res, HttpStatus, Post, Body, Param } from '@nestjs/common';
 import { CheckoutService } from './checkout.service';
 
 
@@ -31,7 +31,11 @@ export class CheckoutController {
       return users;
     }
   
-
+    @Delete(':userfullName')
+    async removeCheckout(@Param('fullName') userfullName: string) {
+      await this.checkoutService.deleteProduct(userfullName);
+      return null;
+    }
 
 
 }

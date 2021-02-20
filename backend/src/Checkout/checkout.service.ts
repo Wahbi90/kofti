@@ -36,6 +36,11 @@ export class CheckoutService {
           cartItems: prod.cartItems
         }));
       }
-        
+      async deleteProduct(userfullName: string) {
+        const result = await this.checkoutModel.deleteOne({fullName: userfullName }).exec();
+        if (result.n === 0) {
+          throw new NotFoundException('Could not find checkout infos');
+        }
+      }
         
       }
