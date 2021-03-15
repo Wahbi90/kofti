@@ -45,7 +45,7 @@ const Headers: FC = () => {
       {/* <img className="logo" src="../../../../public/logo.png"/> */}
       <Header
         style={{
-          backgroundImage: ('untitled-1.png'),
+          backgroundImage: 'untitled-1.png',
           background: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
           position: 'fixed',
           zIndex: 2,
@@ -56,12 +56,17 @@ const Headers: FC = () => {
       >
         <div className="elogo">
           <img
+            onClick={() => {
+              history.push('/');
+            }}
             src={wahbi}
             alt="logo"
-            style={{ height: '100px', width: '100px', margin:
-            '6px 14px 0px 0px',
-            padding:
-            '34px 0px 0px' }}
+            style={{
+              height: '100px',
+              width: '100px',
+              margin: '6px 14px 0px 0px',
+              padding: '34px 0px 0px',
+            }}
           />
           {/* <img src={'../../../../public/assets/logo2.png'} alt="logo" /> */}
           {/* <img src={'logo2.png'} alt="logo" /> */}

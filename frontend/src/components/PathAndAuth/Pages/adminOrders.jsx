@@ -105,7 +105,6 @@ export default class AdminOrders extends Component {
         var res = [];
         for (var j = 0; j < response.data.length; j++) {
           var arr = Object.entries(response.data[j]);
-          console.log(arr[4][0]);
           var obj = {};
           for (var i = 0; i < arr.length; i++) {
             obj[arr[i][0]] = arr[i][1];

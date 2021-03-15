@@ -1,4 +1,5 @@
 import React, { useState, FormEvent, useEffect } from 'react';
+import { Redirect, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Input from '../UI/Input';
@@ -28,6 +29,8 @@ const handelchange3: any = (e) => {
   console.log(obj);
 };
 const handelClick = () => {
+
+
   let productName = JSON.parse(localStorage.getItem('cartItems')).map((el) => {
     return el.title;
   });
@@ -35,7 +38,9 @@ const handelClick = () => {
   axios
     .post('http://localhost:8081/checkout', obj)
     .then((response) => {
-      console.log(response);
+      console.log(response, 'hakuna matata');
+      localStorage.setItem('cartItems','[]');
+      localStorage.setItem('sum','0');
     })
     .catch((err) => {
       console.log(err);

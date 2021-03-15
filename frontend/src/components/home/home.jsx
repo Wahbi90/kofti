@@ -6,7 +6,7 @@ import {
   LaptopOutlined,
   NotificationOutlined,
 } from '@ant-design/icons';
-import { Card, Avatar, Carousel  } from 'antd';
+import { Card, Avatar, Carousel } from 'antd';
 // import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 import {
   EditOutlined,
@@ -16,15 +16,14 @@ import {
 import { Row, Col, Divider } from 'antd';
 import { Input, Space } from 'antd';
 import './home.css';
+import { Redirect } from 'react-router-dom';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 const { Meta } = Card;
-const onSearch = (value) => {}
+const onSearch = (value) => {};
 
-function onChange(a, b, c) {
- 
-}
+function onChange(a, b, c) {}
 
 const contentStyle = {
   height: '500px',
@@ -35,6 +34,7 @@ const contentStyle = {
 };
 
 function Home() {
+
   const { Search } = Input;
   return (
     <Layout>
@@ -48,19 +48,19 @@ function Home() {
               minHeight: 280,
             }}
           >
-            <Carousel autoplay style={{ width: '900px', height: '600px'}}>
-              <div >
-              <img className='set' src="assets/orange.jpg"  ></img>
-              </div>             
-              <div >
-              <img   className='set'  src="assets/watermelon.jpg"  ></img>
+            <Carousel autoplay style={{ width: '900px', height: '600px' }}>
+              <div>
+                <img className="set" src="assets/orange.jpg"></img>
               </div>
-              <div >
-             <img   className='set'  src="assets/strawberry.jpg"  ></img>
-             </div>
-             <div >
-             <img className='set'  src="assets/lemonflavw.jpg"  ></img>
-             </div>
+              <div>
+                <img className="set" src="assets/watermelon.jpg"></img>
+              </div>
+              <div>
+                <img className="set" src="assets/strawberry.jpg"></img>
+              </div>
+              <div>
+                <img className="set" src="assets/lemonflavw.jpg"></img>
+              </div>
             </Carousel>
             <Divider orientation="left">Most Sold Products</Divider>
             <Row justify="space-around">
@@ -83,116 +83,117 @@ function Home() {
                 </Card>
               }
               <Card
-                  style={{ width: 150 }}
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                    />
-                  }
-                  actions={[
-                    <SettingOutlined key="setting" />,
-                    <EditOutlined key="edit" />,
-                    <EllipsisOutlined key="ellipsis" />,
-                  ]}
-                >
-                  <Meta title="title" description="This is the description" />
-                </Card>
-                <Card
-                  style={{ width: 150 }}
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                    />
-                  }
-                  actions={[
-                    <SettingOutlined key="setting" />,
-                    <EditOutlined key="edit" />,
-                    <EllipsisOutlined key="ellipsis" />,
-                  ]}
-                >
-                  <Meta title="title" description="This is the description" />
-                </Card>
-                <Card
-                  style={{ width: 150 }}
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                    />
-                  }
-                  actions={[
-                    <SettingOutlined key="setting" />,
-                    <EditOutlined key="edit" />,
-                    <EllipsisOutlined key="ellipsis" />,
-                  ]}
-                >
-                  <Meta title="title" description="This is the description" />
-                </Card>
-                <Card
-                  style={{ width: 150 }}
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                    />
-                  }
-                  actions={[
-                    <SettingOutlined key="setting" />,
-                    <EditOutlined key="edit" />,
-                    <EllipsisOutlined key="ellipsis" />,
-                  ]}
-                >
-                  <Meta title="title" description="This is the description" />
-                </Card><Card
-                  style={{ width: 150 }}
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                    />
-                  }
-                  actions={[
-                    <SettingOutlined key="setting" />,
-                    <EditOutlined key="edit" />,
-                    <EllipsisOutlined key="ellipsis" />,
-                  ]}
-                >
-                  <Meta title="title" description="This is the description" />
-                </Card>
-                <Card
-                  style={{ width: 150 }}
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                    />
-                  }
-                  actions={[
-                    <SettingOutlined key="setting" />,
-                    <EditOutlined key="edit" />,
-                    <EllipsisOutlined key="ellipsis" />,
-                  ]}
-                >
-                  <Meta title="title" description="This is the description" />
-                </Card>
-                <Card
-                  style={{ width: 150 }}
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                    />
-                  }
-                  actions={[
-                    <SettingOutlined key="setting" />,
-                    <EditOutlined key="edit" />,
-                    <EllipsisOutlined key="ellipsis" />,
-                  ]}
-                >
-                  <Meta title="title" description="This is the description" />
-                </Card>
+                style={{ width: 150 }}
+                cover={
+                  <img
+                    alt="example"
+                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                  />
+                }
+                actions={[
+                  <SettingOutlined key="setting" />,
+                  <EditOutlined key="edit" />,
+                  <EllipsisOutlined key="ellipsis" />,
+                ]}
+              >
+                <Meta title="title" description="This is the description" />
+              </Card>
+              <Card
+                style={{ width: 150 }}
+                cover={
+                  <img
+                    alt="example"
+                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                  />
+                }
+                actions={[
+                  <SettingOutlined key="setting" />,
+                  <EditOutlined key="edit" />,
+                  <EllipsisOutlined key="ellipsis" />,
+                ]}
+              >
+                <Meta title="title" description="This is the description" />
+              </Card>
+              <Card
+                style={{ width: 150 }}
+                cover={
+                  <img
+                    alt="example"
+                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                  />
+                }
+                actions={[
+                  <SettingOutlined key="setting" />,
+                  <EditOutlined key="edit" />,
+                  <EllipsisOutlined key="ellipsis" />,
+                ]}
+              >
+                <Meta title="title" description="This is the description" />
+              </Card>
+              <Card
+                style={{ width: 150 }}
+                cover={
+                  <img
+                    alt="example"
+                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                  />
+                }
+                actions={[
+                  <SettingOutlined key="setting" />,
+                  <EditOutlined key="edit" />,
+                  <EllipsisOutlined key="ellipsis" />,
+                ]}
+              >
+                <Meta title="title" description="This is the description" />
+              </Card>
+              <Card
+                style={{ width: 150 }}
+                cover={
+                  <img
+                    alt="example"
+                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                  />
+                }
+                actions={[
+                  <SettingOutlined key="setting" />,
+                  <EditOutlined key="edit" />,
+                  <EllipsisOutlined key="ellipsis" />,
+                ]}
+              >
+                <Meta title="title" description="This is the description" />
+              </Card>
+              <Card
+                style={{ width: 150 }}
+                cover={
+                  <img
+                    alt="example"
+                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                  />
+                }
+                actions={[
+                  <SettingOutlined key="setting" />,
+                  <EditOutlined key="edit" />,
+                  <EllipsisOutlined key="ellipsis" />,
+                ]}
+              >
+                <Meta title="title" description="This is the description" />
+              </Card>
+              <Card
+                style={{ width: 150 }}
+                cover={
+                  <img
+                    alt="example"
+                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                  />
+                }
+                actions={[
+                  <SettingOutlined key="setting" />,
+                  <EditOutlined key="edit" />,
+                  <EllipsisOutlined key="ellipsis" />,
+                ]}
+              >
+                <Meta title="title" description="This is the description" />
+              </Card>
             </Row>
           </Content>
         </Layout>

@@ -194,7 +194,7 @@ handlePageClick = (pageNumber) => {
                 </Col>
               ))}
           </Space>
-  }
+  
         </Row>
         <BackTop>
       <div style={style}>UP</div>

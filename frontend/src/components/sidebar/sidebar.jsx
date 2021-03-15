@@ -78,3 +78,5 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = { changeCategory };
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+
+

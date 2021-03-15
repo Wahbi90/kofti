@@ -48,10 +48,10 @@ const App = ({ getUser, user }) => {
         <Switch>
           <PublicRoute exact path="/">
             <Sidebar />
+            <CardsList />
             {/* <Cart /> */}
             {/* <Cart /> */}
             {/* <Areas /> */}
-            <CardsList />
 
             {/* <Home /> */}
           </PublicRoute>
